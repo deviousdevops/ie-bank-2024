@@ -1,0 +1,9 @@
+[submodule "ie-bank-fe-2024"]
+	path = ie-bank-fe-2024
+	url = https://github.com/haxybaxy/ie-bank-fe-2024.git
+[submodule "ie-bank-be-2024"]
+	path = ie-bank-be-2024
+	url = https://github.com/haxybaxy/ie-bank-be-2024.git
+[submodule "ie-bank-infra-2024"]
+	path = ie-bank-infra-2024
+	url = https://github.com/haxybaxy/ie-bank-infra-2024.git
