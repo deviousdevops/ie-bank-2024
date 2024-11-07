@@ -4,15 +4,31 @@ title: "General System Description"
 ---
 
 <style>
-.next-section-link {
+
+.back-home-link {
   position:fixed;
+  bottom: 10px;
+  left: 20px;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.back-home-link:hover {
+  background-color: #D3D3D3;
+}
+
+.next-section-link {
+  position: fixed;
+  bottom: 20px;
+  right: 20px; 
   color: white;
   padding: 10px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
-  display: inline-block; 
-  margin-top: 20px; 
   }
 
 .next-section-link:hover {
@@ -93,6 +109,14 @@ This section provides an overview of the general system architecture and its com
 
 - 
 
+<div class="previous-section-link"> 
+  <a href="assumptions_constraints.html">Previous</a>
+</div>
+
+<div class="back-home-link">
+  <a href="index.html">Back to home</a>
+</div>
+
 <div class="next-section-link">
-  <a href="functional_requirements.html">Next: Functional Requirements</a>
+  <a href="functional_requirements.html">Next</a>
 </div>

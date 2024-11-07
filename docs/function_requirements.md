@@ -4,15 +4,31 @@ title: "Functional Requirements"
 ---
 
 <style>
-.next-section-link {
+
+.back-home-link {
   position:fixed;
+  bottom: 10px;
+  left: 20px;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.back-home-link:hover {
+  background-color: #D3D3D3;
+}
+
+.next-section-link {
+  position: fixed;
+  bottom: 20px;
+  right: 20px; 
   color: white;
   padding: 10px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
-  display: inline-block; s
-  margin-top: 20px; 
   }
 
 .next-section-link:hover {
@@ -37,6 +53,7 @@ title: "Functional Requirements"
 #table-of-contents {
   margin-bottom: 20px;
 }
+
 </style>
 
 # Functional Requirements
@@ -70,6 +87,14 @@ This section defines the functional requirements for the IE BANK project.
 
 - 
 
+<div class="previous-section-link"> 
+  <a href="general_system_description.html">Previous</a>
+</div>
+
+<div class="back-home-link">
+  <a href="index.html">Back to home</a>
+</div>
+
 <div class="next-section-link">
-  [Next: Non-Functional Requirements](non_functional_requirements.md)
+  <a href="non_functional_requirements.html">Next</a>
 </div>

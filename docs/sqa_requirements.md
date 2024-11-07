@@ -4,15 +4,31 @@ title: "Software Quality Assurance (SQA) Requirements"
 ---
 
 <style>
-.next-section-link {
+
+.back-home-link {
   position:fixed;
+  bottom: 10px;
+  left: 20px;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.back-home-link:hover {
+  background-color: #D3D3D3;
+}
+
+.next-section-link {
+  position: fixed;
+  bottom: 20px;
+  right: 20px; 
   color: white;
   padding: 10px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
-  display: inline-block; s
-  margin-top: 20px; 
   }
 
 .next-section-link:hover {
@@ -50,6 +66,11 @@ This section covers the software quality assurance aspects for the IE BANK proje
 
 - 
 
+<div class="previous-section-link"> 
+  <a href="software_modelling.html">Previous</a>
+</div>
+
+
 <div class="next-section-link">
-  [Next: Project Documentation](project_documentation.md)
+  <a href="index.html">Back to Home</a>
 </div>
