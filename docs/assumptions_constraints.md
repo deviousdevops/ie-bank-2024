@@ -5,26 +5,22 @@ title: "Assumptions and Constraints"
 
 <style>
 .next-section-link {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #007bff;
   color: white;
   padding: 10px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
-}
+  display: inline-block; s
+  margin-top: 20px; 
+  }
 
 .next-section-link:hover {
-  background-color: #0056b3;
+  background-color: #D3D3D3;
 }
 
 .previous-section-link {
-  position: fixed;
   bottom: 20px;
   left: 20px;
-  background-color: #28a745;
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -33,8 +29,9 @@ title: "Assumptions and Constraints"
 }
 
 .previous-section-link:hover {
-  background-color: #218838;
+  background-color: #D3D3D3;
 }
+
 </style>
 
 # Assumptions and Constraints
@@ -53,10 +50,10 @@ This section outlines the assumptions and constraints for the IE BANK project.
 - Constraint 2: 
 - Constraint 3: 
 
-<div class="previous-section-link">
-  [Previous: Software Modelling](software_modelling.md)
+<div class="next-section-link">
+  <a href="general_system_description.html">Next: General System Description</a>
 </div>
 
-<div class="next-section-link">
-  [Next: General System Description](general_system_description.md)
+<div class="previous-section-link"> 
+  <a href="assumptions_constraints.html">Previous: Assumptions and Constraints</a>
 </div>
