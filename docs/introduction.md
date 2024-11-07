@@ -8,7 +8,6 @@ title: "Introduction"
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #007bff;
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -27,6 +26,6 @@ This section covers the introductory material for the project documentation.
 
 
 <div class="next-section-link">
-  <a href="assumptions_constraints.md">Next: Assumptions and Constraints</a>
+  <a href="assumptions_constraints.html">Next: Assumptions and Constraints</a>
 </div>
  
