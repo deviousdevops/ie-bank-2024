@@ -80,8 +80,5 @@ This section provides an overview of the general system architecture and its com
 - 
 
 <div class="next-section-link">
-  [Next: Functional Requirements](functional_requirements.md)
-</div>
-<div class="next-section-link">
   <a href="functional_requirements.html">Next: Functional Requirements</a>
 </div>
