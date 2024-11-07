@@ -11,7 +11,7 @@ title: "General System Description"
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
-  display: inline-block; s
+  display: inline-block; 
   margin-top: 20px; 
   }
 
