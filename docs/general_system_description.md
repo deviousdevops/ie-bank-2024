@@ -7,7 +7,7 @@ title: "General System Description"
 
 .back-home-link {
   position:fixed;
-  bottom: 10px;
+  bottom: 5px;
   left: 20px;
   color: white;
   padding: 10px;
