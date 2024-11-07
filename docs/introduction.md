@@ -4,15 +4,12 @@ title: "Introduction"
 ---
 
 <style>
-  .header {
-  background-color: #f8f9fa; /* Light background for the header */
-  padding: 10px;
-  text-align: center;
-}
 
 .back-home-link {
+  position:fixed;
+  bottom: 10px;
+  left: 20px;
   color: white;
-  background-color: #007bff; /* Set a background color for visibility */
   padding: 10px;
   border-radius: 5px;
   text-decoration: none;
@@ -20,18 +17,18 @@ title: "Introduction"
 }
 
 .back-home-link:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: #D3D3D3;
 }
 
 .next-section-link {
-  position:fixed;
+  position: fixed;
+  bottom: 20px;
+  left: 20px; 
   color: white;
   padding: 10px;
   border-radius: 5px;
   text-decoration: none;
-  font-weight: bold;
-  display: inline-block; s
-  margin-top: 20px; 
+  font-weight: normal;
   }
 
 .next-section-link:hover {
@@ -55,10 +52,6 @@ title: "Introduction"
 
 </style>
 
-<div class="header">
-  <a href="index.html" class="back-home-link">Back to Home</a>
-</div>
-
 # Introduction
 
 This section covers the introductory material for the project documentation.
@@ -69,6 +62,10 @@ This section covers the introductory material for the project documentation.
 </div>
 
 <div class="previous-section-link">
+  <a href="index.html">Back to home</a>
+</div>
+
+<div class="back-home-link">
   <a href="index.html">Back to home</a>
 </div>
  
