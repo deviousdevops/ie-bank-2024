@@ -5,6 +5,7 @@ title: "Assumptions and Constraints"
 
 <style>
 .next-section-link {
+  position:fixed;
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -19,6 +20,7 @@ title: "Assumptions and Constraints"
 }
 
 .previous-section-link {
+  position:fixed;
   bottom: 20px;
   left: 20px;
   color: white;
@@ -27,11 +29,6 @@ title: "Assumptions and Constraints"
   text-decoration: none;
   font-weight: bold;
 }
-
-.previous-section-link:hover {
-  background-color: #D3D3D3;
-}
-
 </style>
 
 # Assumptions and Constraints

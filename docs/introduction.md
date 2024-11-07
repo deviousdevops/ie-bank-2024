@@ -4,7 +4,27 @@ title: "Introduction"
 ---
 
 <style>
+  .header {
+  background-color: #f8f9fa; /* Light background for the header */
+  padding: 10px;
+  text-align: center;
+}
+
+.back-home-link {
+  color: white;
+  background-color: #007bff; /* Set a background color for visibility */
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-home-link:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
 .next-section-link {
+  position:fixed;
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -19,6 +39,7 @@ title: "Introduction"
 }
 
 .previous-section-link {
+  position:fixed;
   bottom: 20px;
   left: 20px;
   color: white;
@@ -33,6 +54,10 @@ title: "Introduction"
 }
 
 </style>
+
+<div class="header">
+  <a href="index.html" class="back-home-link">Back to Home</a>
+</div>
 
 # Introduction
 

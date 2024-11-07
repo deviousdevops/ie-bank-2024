@@ -5,10 +5,24 @@ title: "Software Modelling"
 
 <style>
 .next-section-link {
-  position: fixed;
+  position:fixed;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block; s
+  margin-top: 20px; 
+  }
+
+.next-section-link:hover {
+  background-color: #D3D3D3;
+}
+
+.previous-section-link {
+  position:fixed;
   bottom: 20px;
-  right: 20px;
-  background-color: #007bff;
+  left: 20px;
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -16,8 +30,8 @@ title: "Software Modelling"
   font-weight: bold;
 }
 
-.next-section-link:hover {
-  background-color: #0056b3;
+.previous-section-link:hover {
+  background-color: #D3D3D3;
 }
 
 #table-of-contents {
