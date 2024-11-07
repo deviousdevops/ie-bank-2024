@@ -1,5 +1,7 @@
-remote_theme: pages-themes/cayman 
+remote_theme: pages-themes/architect
 title: "IE BANK"
 description: "Project documentation and design"
+stylesheet: /docs/assets/css/style.css
+
 
 
