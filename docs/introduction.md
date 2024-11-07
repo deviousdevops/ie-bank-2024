@@ -13,7 +13,7 @@ title: "Introduction"
   padding: 10px;
   border-radius: 5px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .back-home-link:hover {
@@ -23,12 +23,12 @@ title: "Introduction"
 .next-section-link {
   position: fixed;
   bottom: 20px;
-  left: 20px; 
+  right: 20px; 
   color: white;
   padding: 10px;
   border-radius: 5px;
   text-decoration: none;
-  font-weight: normal;
+  font-weight: bold;
   }
 
 .next-section-link:hover {
@@ -58,12 +58,9 @@ This section covers the introductory material for the project documentation.
 
 
 <div class="next-section-link">
-  <a href="assumptions_constraints.html">Next: Assumptions and Constraints</a>
+  <a href="assumptions_constraints.html">Next</a>
 </div>
 
-<div class="previous-section-link">
-  <a href="index.html">Back to home</a>
-</div>
 
 <div class="back-home-link">
   <a href="index.html">Back to home</a>
