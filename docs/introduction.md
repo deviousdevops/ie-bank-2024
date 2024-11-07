@@ -27,5 +27,6 @@ This section covers the introductory material for the project documentation.
 
 
 <div class="next-section-link">
-  [Next: Assumptions and Constraints](assumptions_constraints.md)
+  <a href="assumptions_constraints.md">Next: Assumptions and Constraints</a>
 </div>
+ 
