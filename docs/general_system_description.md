@@ -102,7 +102,7 @@ This section provides an overview of the general system architecture and its com
   - SLA of all Azure Services hosting your production workload.
   - Configuration applied to the hosting infrastructure in production.
   - Dependencies between your components (service mapping).
-  - Use cases affecting user experience.
+  - Use cases affecting user experience. small change
   - Documented SLIs and SLOs.
 
 ### Service Level Objectives (SLOs)
