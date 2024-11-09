@@ -107,23 +107,43 @@ This section provides an overview of the general system architecture and its com
 
 ### Service Level Objectives (SLOs)
 
-- Define and document at least 5 SLOs, including:
-  - Objective 1: [Description of the objective]
-  - Objective 2: [Description of the objective]
-  - Objective 3: [Description of the objective]
-  - Objective 4: [Description of the objective]
-  - Objective 5: [Description of the objective]
+  - Objective 1 - User Authentication Response Time:  99% of user login requests will be processed in under 2 seconds
+  - Objective 2 - Transaction Processing Time - 95% of money transfer transactions will be completed within 3 seconds
+  - Objective 3 - Database Query Performance: 90% of database queries executed against the PostgreSQL database will complete in under 500 milliseconds
+  - Objective 4 - HTTP Requests: 95% of HTTP requests for the IE Bank static website will be processed in under 2 seconds.
+  - Objective 5 - System Availability: The overall system (frontend and backend) will maintain an uptime of 99.9% over any given month
 
-### Service Level Indicators (SLIs)
+  ### Service Level Indicators (SLIs)
 
-- For each SLO, document the corresponding SLIs and metrics to measure:
-  - SLO 1: [SLI Description and Metrics]
-  - SLO 2: [SLI Description and Metrics]
-  - SLO 3: [SLI Description and Metrics]
-  - SLO 4: [SLI Description and Metrics]
-  - SLO 5: [SLI Description and Metrics]
+    - SLO 1: SLI Type: Latency
 
-### Azure Services Utilized
+           SLI Specification: Proportion of user login requests processed in < 2 seconds.
+
+           SLI = (Number of successful login requests processed in < 2 seconds) / (Total number of login requests)
+
+      - SLO 2: SLI Type: Latency
+          
+           SLI Specification: Proportion of money transfer transactions completed in < 3 seconds.
+
+           SLI = (Number of successful transactions completed in < 3 seconds) / (Total number of transactions)
+
+      - SLO 3: SLI Type: Latency
+
+           SLI Specification: Proportion of database queries completed in < 500 milliseconds.
+
+           SLI = (Number of successful queries completed in < 500 milliseconds) / (Total number of queries)
+
+      - SLO 4: SLI Type: Availability
+           
+           SLI Specification: Proportion of successful HTTP requests.
+
+           SLI = (Number of successful HTTP requests) / (Total number of HTTP requests)
+
+      - SLO 5: SLI Type: Availability
+           
+           SLI Specification: System uptime maintained at or above 99.9%.
+
+           SLI = (Total uptime minutes) / (Total minutes in the month)
 
 - Outline the Azure services that will be used for the monitoring strategy:
   - Azure Monitor
