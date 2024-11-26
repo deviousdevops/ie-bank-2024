@@ -83,6 +83,56 @@ This section provides an overview of the general system architecture and its com
 - 
 
 ## Infrastructure Architecture Design
+The infrastructure for the IE Bank MVP has been carefully designed to ensure scalability, security, and cost-effectiveness while meeting the functional and non-functional requirements of the application. We have adopted a cloud-native approach, leveraging Microsoft Azure services to create a robust DTAP (Development, Testing, Acceptance, Production) environment strategy. This design aligns with industry best practices and the Azure Well-Architected Framework.
+
+### Key Azure Services and Architecture Components
+1. **Frontend Hosting** : **Azure Static Web Apps:**
+  - A lightweight and cost-effective service to host the Vue.js frontend.
+  - Provides automatic CI/CD integration via GitHub Actions
+  - Enables global scalability and quick deployment.
+2. **Backend Hosting**: **Azure App Service for Containers**
+  - Hosts the Python backend as a containarized service. 
+  - Proivides seamless scalling, reliabilit, and integration with Azure monitoring tools.
+3. **Database: Azure Database for PostreSQL**
+  - A managed relational database service chosen for secure and scalable data storage.
+  - Utilizes Flexible Server mode for optimal cost and performance.
+4. **Container Management: Azure Container Registry (ACR):**
+  - Hosts Docker container images for backend services
+  - Integrated with Key Vault for secure credential management.
+5. **Secrets Management: Azure Key Vault**
+  - Ensures secure storage of secrets like PostgreSQL credentials and ACR authentication keys.
+  - Integrated with the backend and deployment pipelines for automated secret retrieval.
+6. **Monitoring and Logging: Azure Monitor and Log Analytics Workspace**
+  - Centralized log collection and metric analysis for infrastructure and application layers.
+  - Azure Application Insights:
+  - Provides in-depth performance monitoring and telemetry for the frontend and backend.
+
+### Environment Setup: DTAP Approach
+We have implemented a **DTAP** (Development, Testing, Acceptance, Production) environment strategy to ensure isolated and controlled stages for the application lifecycle.
+1. **Development Environment:**
+  - Deployed in a dedicated Azure Resource Group (BCSAI2024-DEVOPS-STUDENTS-A-DEV).
+  - Accessible to the team for experimentation and feature development.
+  - Configured for real-time CI/CD deployments triggered by feature branch commits.
+2. **Testing Environment:**
+  - Integrated with the UAT Resource Group(BCSAI2024-DEVOPS-STUDENTS-A-UAT).
+  - Facilitates automated functional tests via GitHub Actions.
+  - Simulates production workloads for stakeholder demonstrations.
+3. **Production Environment:**
+  - Hosted in a Production Resource Group (BCSAI2024-DEVOPS-STUDENTS-A-PROD).
+  - Configured for high availability and optimal performance for end-users.
+  - Deployments occur only after successful tests in UAT.
+
+### Infrastructure-as-Code (IaC)
+The infrastructure is defined using **Azure Bicep**, a modular IaC approach that simplifies deployment and management.
+1. **Modularization:**
+ - Each Azure service (e.g., App Service, PostgreSQL, Key Vault) is defined as an independent Bicep module.
+ - These modules are reusable and parameterized to support the DTAP environment strategy.
+2. **Main Bicep File:**
+  - Acts as the orchestrator for deploying all modules.
+  - Environment-specific configurations (e.g., database tiers, region settings) are handled via parameter files.
+3. **Parameter Files:**
+- Separate parameter files for Development, UAT, and Production.
+- Enables consistent deployment across all environments with minimal changes.
 
 - 
 
