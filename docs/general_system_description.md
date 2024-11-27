@@ -219,6 +219,165 @@ The infrastructure is defined using **Azure Bicep**, a modular IaC approach that
 
 -
 
+## Incident Response Design
+Incident Response Design
+
+Incident Response Design for IE Bank Application
+
+Version: 1.0
+
+Effective Date: 08/11/2024
+
+Last Reviewed: 27/11/2024
+
+1\. Purpose
+
+This document defines the incident response plan for the IE Bank application, detailing the detection, response, and resolution processes for incidents. The main goal is to minimize downtime, adhere to SLA commitments, and ensure customer satisfaction.
+
+2\. Incident Response Objectives
+
+Minimize downtime: Maintain 99.9% system uptime.
+
+Ensure SLO adherence: Address login latency, transaction processing, and database query performance.
+
+Rapid resolution: Detect and resolve incidents efficiently to mitigate customer impact.
+
+Effective communication: Keep internal teams and stakeholders informed during incidents.
+
+3\. Detection
+
+Tools:
+
+-   Application Insights: Detect infrastructure and latency issues in login, transaction processing, and HTTP requests.
+
+-   Log Analytics Workspace: Collect database query performance metrics.
+
+-   Diagnostic Settings: Send logs from App Services, PostgreSQL, and Container Registry to Log Analytics Workspace.
+
+Real-Time Alerts:
+
+-   User login latency exceeds 2 seconds.
+
+-   Money transfer processing time exceeds 3 seconds.
+
+-   Database query execution time exceeds 500ms.
+
+-   System uptime drops below 99.9%.
+
+-   HTTP error rate spikes.
+
+4 Incident Response Steps
+
+Detection:
+
+-   Real-time alert triggered by Azure Monitor or Application Insights.
+
+-   Example: Application Insights logs "Money transfer latency exceeds 3 seconds."
+
+Notification:
+
+-   Notification sent via Slack (integrated with Azure Alerts)
+
+Triage:
+
+-   Assess incident severity using real-time dashboards and logs.
+
+-   Identify the impacted component (frontend, backend, database, or monitoring).
+
+Response:
+
+-   Critical Incidents:
+
+-   Restart affected App Services or database services.
+
+-   Use Azure Resource Health to confirm Azure platform stability.
+
+-   High/Medium Incidents:
+
+-   Address slow-performing queries or API endpoints.
+
+-   Use Runbooks to scale infrastructure or optimize resources.
+
+Resolution:
+
+-   Fix the issue and verify normal operations.
+
+Post-Incident Review:
+
+-   Conduct a retrospective to document root cause, impact, and resolution.
+
+-   Implement measures to prevent recurrence (e.g., adjust thresholds or add load testing).
+
+5\. External Communication
+
+If there were to be a problem, we would notify customers via email or in-app alerts for Critical/High incidents.
+
+Example:
+
+We are experiencing an issue with our money transfer system. Our team is working to resolve this and restore service as quickly as possible. Thank you for your patience.
+
+6\. Roles and Responsibilities
+
+Role  Responsibilities
+
+On-Call Engineer  Respond to alerts, investigate the issue, and implement fixes.
+
+Incident Manager  Oversee response efforts and coordinate communication with stakeholders.
+
+DevOps Engineer  Resolve infrastructure-level issues (e.g., scaling, container registry).
+
+Database Admin  Address database performance issues (e.g., slow queries, connection errors).
+
+SRE Team Lead  Conduct incident retrospectives and implement process improvements.
+
+7\. Key Tools and Automation
+
+7.1 Tools
+
+-   Application Insights: Monitors application performance and error rates.
+
+-   Log Analytics Workspace: Stores diagnostic logs for database and application monitoring.
+
+-   Azure Workbooks/Dashboards: Visualizes real-time metrics and incident status.
+
+7.2 Automation
+
+-   Slack Integration: Notify teams of incidents and escalate unacknowledged alerts.
+
+-   Azure Resource Health: Confirm Azure service health during incidents.
+
+8\. Metrics for Measuring Incident Response
+
+Metric  Description
+
+-   Time to Detect (TTD): Time taken to detect an incident after it occurs.
+
+-   Time to Acknowledge (TTA):  Time taken for an on-call engineer to acknowledge the incident.
+
+-   Time to Resolve (TTR): Time taken to fully resolve the incident.
+
+9\. Post-Incident Review Process
+
+Root Cause Analysis:
+
+-   Identify the root cause (e.g., database query inefficiency, container crash).
+
+Impact Analysis:
+
+-   Assess the impact on SLOs and SLAs (e.g., downtime or latency breaches).
+
+Preventive Measures:
+
+-   Update alert thresholds or implement new monitoring techniques.
+
+-   Additionally, update any necessary documentation to keep things up to date and prevent it from happening again
+
+10\. Review, Revision and Acceptance
+
+As same as the SLA, this incident response plan will be reviewed quarterly. 
+
+By using this plan, devious IE bank ensures an effective response to incidents, minimizing disruptions and adhering to SLA commitments.
+
 ## Well Architected Framework Design
 
 ### Reliability
