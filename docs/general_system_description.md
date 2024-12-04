@@ -135,12 +135,214 @@ The infrastructure is defined using **Azure Bicep**, a modular IaC approach that
 - Enables consistent deployment across all environments with minimal changes.
 
 - 
+## Well Architected Framework Design
+
+The design of the IE Bank application leverages the Microsoft Azure Well-Architected Framework to ensure it meets high standards of reliability, security, performance, cost efficiency, and operational excellence. Each design decision has been carefully evaluated to address both functional and non-functional requirements while ensuring scalability and resilience.
+
+### 1. Reliability
+
+Reliability is critical to ensure the IE Bank MVP performs its intended functions without failure, especially in Production.
+
+**Design Features:**
+- **Azure App Service Plan**:
+  - Uses a zone-redundant configuration for high availability in Production.
+  - Autoscaling enabled based on CPU and memory utilization to handle peak loads.
+- **Azure Database for PostgreSQL**:
+  - Configured in zone-redundant mode for fault tolerance.
+  - Automatic backups with point-in-time recovery enabled.
+- **Monitoring and Alerts**:
+  - Azure Monitor provides real-time insights into application performance.
+  - Alerts notify teams of potential issues, enabling swift remediation.
+
+### 2. Security
+
+Security ensures the protection of sensitive data, such as user credentials and financial transactions.
+
+**Design Features:**
+- **Azure Key Vault**:
+  - Manages secrets, connection strings, and sensitive credentials.
+  - Integrated with App Services and GitHub workflows for secure CI/CD pipelines.
+- **GitHub Advanced Security**:
+  - CodeQL scans for vulnerabilities in backend (Python) and frontend (Vue.js).
+  - Dependabot keeps dependencies up-to-date, reducing exposure to known vulnerabilities.
+- **Azure Networking**:
+  - Restricts inbound traffic using Application Gateway and Network Security Groups (NSGs).
+- **Encryption**:
+  - Data at rest is encrypted with Azure-managed keys in PostgreSQL.
+  - Data in transit uses HTTPS and TLS for frontend-backend communication.
+
+### 3. Cost Optimization
+
+Cost optimization ensures efficient use of Azure resources while maintaining performance and reliability.
+
+**Design Features:**
+- **Resource Scaling**:
+  - Development and UAT environments use lower-cost service tiers.
+  - Production leverages autoscaling to adjust resource usage based on traffic demands.
+- **Static Web Hosting**:
+  - Vue.js frontend is hosted on Azure Static Web Apps, minimizing hosting costs.
+- **Efficient Resource Utilization**:
+  - Consolidated logging and monitoring using a single Log Analytics Workspace.
+  - Scheduled database scaling during non-peak hours for Development and UAT.
+
+
+### 4. Performance Efficiency
+
+Performance efficiency ensures the application can handle current and future workloads effectively.
+
+**Design Features:**
+- **Azure App Service Plan**:
+  - Configured for autoscaling based on CPU and memory utilization.
+  - Optimized for container workloads with Linux App Services.
+- **Azure Database for PostgreSQL**:
+  - Uses optimized query execution plans and indexing to reduce latency.
+- **Application Insights**:
+  - Tracks application performance metrics (e.g., response times, request rates).
+  - Identifies bottlenecks in real-time for both frontend and backend.
+
+
+### 5. Operational Excellence
+
+Operational excellence ensures smooth application deployment and maintenance, minimizing downtime and maximizing development productivity.
+
+**Design Features:**
+- **CI/CD Pipelines**:
+  - GitHub Actions automate deployments across Development, UAT, and Production.
+  - Includes tests for code quality, security, and functionality.
+- **Infrastructure as Code (IaC)**:
+  - Bicep templates modularize and automate resource provisioning.
+- **Monitoring and Incident Response**:
+  - Azure Monitor and Application Insights provide real-time visibility.
+  - Alerts integrated with Slack via ChatOps for rapid incident response.
+
+
+
+### Design Tradeoffs
+
+Some design decisions involve tradeoffs to balance between the framework pillars:
+- **Cost vs. Reliability**:
+  - UAT and Production environments prioritize reliability with higher-tier resources.
+  - Development uses cost-effective options like basic-tier PostgreSQL and App Services.
+- **Performance vs. Cost**:
+  - Autoscaling ensures optimal performance during peak loads, but may incur additional costs.
+
+### Unnadressed Pillar - Sustainability
+**Why Not Addressed?**
+Sustainability was not a primary focus during the MVP phase, as the project prioritized performance, security, and cost management. The effort required to evaluate and optimize environmental impact will be deferred to later stages.
+**Future Plans:**
+- Incorporate tools like Azure Sustainability Calculator to evaluate the carbon footprint of the application.
+- Optimize resource usage further, such as reducing idle resource consumption in non-production environments and leveraging green regions where available.
+
+
+### Summary
+
+The IE Bank application infrastructure adheres to the Azure Well-Architected Framework, ensuring a secure, reliable, and efficient system. By leveraging Azure's robust services and best practices, the design supports scalability, performance, and operational excellence, meeting both current needs and future growth.
+
+-
 
 ## Environments Design
 
 - 
 
 ## Release Strategy
+
+This updated release strategy ensures that all deployments across Development, UAT, and Production environments are executed securely, reliably, and efficiently. It integrates environment-specific designs, aligns with the DevOps Checklist from Azure Architecture Center, and incorporates best practices from DevSecOps with GitHub Security.
+
+### Environment Design in the Release Strategy
+The release strategy follows our **DTAP (Development, Testing, Acceptance, Production)** approach, ensuring isolated and purpose-driven environments. Each environment plays a specific role in the lifecycle:
+
+**Development Environment**
+- **Purpose**: Active development, experimentation, and unit testing.
+- **Configuration**:
+  - Lightweight App Service plans and database tiers to reduce costs.
+  - Integration with feature branch CI pipelines.
+- **Deployment Trigger**: Commits to feature branches.
+
+**UAT Environment**
+- **Purpose**: Validation of functionality, stakeholder feedback, and pre-production testing.
+- **Configuration**:
+  - Closer parity with Production, including App Service scaling and database settings.
+  - Automated functional tests and manual QA processes.
+- **Deployment Trigger**: Pull Requests (PRs) to the main branch.
+
+**Production Environment**
+- **Purpose**: Final live environment for end-users.
+- **Configuration**:
+  - High-availability services and redundancy (e.g., zone-redundant PostgreSQL).
+  - Secure configurations and monitoring (Key Vault, Azure Monitor).
+- **Deployment Trigger**: Successful tests in UAT and approved PRs merged into the main branch.
+
+### Decisions Based on the DevOps Checklist
+
+The **DevOps Checklist** from the Azure Architecture Center has been reviewed and incorporated to ensure best practices in the release strategy:
+
+**Source Control**
+- All code, including IaC, is stored in GitHub repositories.
+- Feature branching with branch policies (e.g., PR reviews, status checks).
+
+**Continuous Integration/Delivery**
+- Automated CI pipelines for building, testing, and deploying applications.
+- Continuous Delivery pipelines configured with environment-specific gates:
+  - Feature branches → Development
+  - PRs → UAT
+  - Main branch merges → Production
+
+**Testing**
+- **Unit tests**: `pytest` for backend, Postman for APIs in CI workflows.
+- **Automated functional tests**: Required for UAT deployments as status checks.
+- **Deployment strategies**: Canary or blue-green strategies for critical Production updates.
+
+**Infrastructure as Code (IaC)**
+- Infrastructure modularized using Azure Bicep.
+- Parameterized templates for environment-specific configurations.
+
+**Monitoring and Logging**
+- Centralized logging with Log Analytics Workspace.
+- Alerts and dashboards configured for proactive issue detection.
+
+### Review and Decisions Based on DevSecOps with GitHub Security
+
+The **DevSecOps best practices** from Azure Architecture Center and GitHub Security are integrated into the release strategy to secure the pipeline and application:
+
+**GitHub Security Features**
+- **CodeQL**: Automated code scanning for vulnerabilities in backend (Python) and frontend (Vue.js).
+- **Dependabot**: Monitors and updates dependencies to patch known vulnerabilities.
+- **Secret Scanning**: Prevents sensitive information like API keys from being committed.
+- **Push Protection**: Blocks the addition of secrets to the repository.
+
+**Infrastructure Security**
+- Secrets (e.g., PostgreSQL credentials) managed via Azure Key Vault.
+- App Service and database configured with strict access controls and encrypted connections.
+
+**CI/CD Pipeline Security**
+- GitHub branch protection policies enforce PR reviews, status checks, and passing tests before merging.
+- Deployment credentials stored securely in Key Vault and retrieved dynamically during builds.
+- Least privilege access for pipeline Service Principal (SP) accounts.
+
+**Application Security**
+- End-to-end encryption for data at rest (Azure-managed keys) and in transit (HTTPS/TLS).
+- Role-based access control (RBAC) ensures proper permissions in Azure environments.
+
+### Updated Deployment Workflow
+
+This release strategy incorporates secure and efficient deployment workflows:
+
+**Development**
+- Linting, building, and unit tests on every commit.
+- Immediate deployment to Development.
+
+**UAT**
+- Triggered by PR creation.
+- Automated functional tests must pass to proceed.
+
+**Production**
+- Final deployment triggered by merging a PR.
+- Production monitoring activated to verify deployment success.
+
+### Summary
+
+The updated release strategy tightly integrates secure, efficient, and scalable practices while aligning with the Azure DevOps Checklist and DevSecOps principles. This approach ensures that every release is not only functional but also secure, robust, and auditable, minimizing risks while maximizing delivery speed and confidence.
+
 
 - 
 
@@ -378,7 +580,6 @@ As same as the SLA, this incident response plan will be reviewed quarterly. 
 
 By using this plan, devious IE bank ensures an effective response to incidents, minimizing disruptions and adhering to SLA commitments.
 
-## Well Architected Framework Design
 
 ### Reliability
 
