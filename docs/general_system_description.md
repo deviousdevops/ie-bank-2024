@@ -134,7 +134,7 @@ The infrastructure is defined using **Azure Bicep**, a modular IaC approach that
 - Separate parameter files for Development, UAT, and Production.
 - Enables consistent deployment across all environments with minimal changes.
 
-- 
+
 ## Well Architected Framework Design
 
 The design of the IE Bank application leverages the Microsoft Azure Well-Architected Framework to ensure it meets high standards of reliability, security, performance, cost efficiency, and operational excellence. Each design decision has been carefully evaluated to address both functional and non-functional requirements while ensuring scalability and resilience.
@@ -151,7 +151,7 @@ Reliability is critical to ensure the IE Bank MVP performs its intended function
   - Configured in zone-redundant mode for fault tolerance.
   - Automatic backups with point-in-time recovery enabled.
 - **Monitoring and Alerts**:
-  - Azure Monitor provides real-time insights into application performance.
+  - Log analytics provide real-time insights into application performance.
   - Alerts notify teams of potential issues, enabling swift remediation.
 
 ### 2. Security
@@ -229,6 +229,7 @@ Some design decisions involve tradeoffs to balance between the framework pillars
 ### Unnadressed Pillar - Sustainability
 **Why Not Addressed?**
 Sustainability was not a primary focus during the MVP phase, as the project prioritized performance, security, and cost management. The effort required to evaluate and optimize environmental impact will be deferred to later stages.
+
 **Future Plans:**
 - Incorporate tools like Azure Sustainability Calculator to evaluate the carbon footprint of the application.
 - Optimize resource usage further, such as reducing idle resource consumption in non-production environments and leveraging green regions where available.
@@ -238,7 +239,6 @@ Sustainability was not a primary focus during the MVP phase, as the project prio
 
 The IE Bank application infrastructure adheres to the Azure Well-Architected Framework, ensuring a secure, reliable, and efficient system. By leveraging Azure's robust services and best practices, the design supports scalability, performance, and operational excellence, meeting both current needs and future growth.
 
--
 
 ## Environments Design
 
@@ -343,8 +343,6 @@ This release strategy incorporates secure and efficient deployment workflows:
 
 The updated release strategy tightly integrates secure, efficient, and scalable practices while aligning with the Azure DevOps Checklist and DevSecOps principles. This approach ensures that every release is not only functional but also secure, robust, and auditable, minimizing risks while maximizing delivery speed and confidence.
 
-
-- 
 
 ## Monitoring Strategy
 
