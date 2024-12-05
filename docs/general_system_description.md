@@ -77,6 +77,8 @@ This section provides an overview of the general system architecture and its com
   - [3. Cost Optimization](#3-cost-optimization)
   - [4. Performance Efficiency](#4-performance-efficiency)
   - [5. Operational Excellence](#5-operational-excellence)
+- [12-Factor App Design](#12-factor-app-design)
+
 
 ## System Context
 
@@ -360,37 +362,32 @@ The updated release strategy tightly integrates secure, efficient, and scalable 
   - Objective 4 - HTTP Requests: 95% of HTTP requests for the IE Bank static website will be processed in under 2 seconds.
   - Objective 5 - System Availability: The overall system (frontend and backend) will maintain an uptime of 99.9% over any given month
 
-  ### Service Level Indicators (SLIs)
+### Service Level Indicators (SLIs)
 
-    - SLO 1: SLI Type: Latency
+- **SLO 1**: **SLI Type**: Latency  
+  **SLI Specification**: Proportion of user login requests processed in < 2 seconds.  
+  **SLI Formula**:  
+  `SLI = (Number of successful login requests processed in < 2 seconds) / (Total number of login requests)`
 
-           SLI Specification: Proportion of user login requests processed in < 2 seconds.
+- **SLO 2**: **SLI Type**: Latency  
+  **SLI Specification**: Proportion of money transfer transactions completed in < 3 seconds.  
+  **SLI Formula**:  
+  `SLI = (Number of successful transactions completed in < 3 seconds) / (Total number of transactions)`
 
-           SLI = (Number of successful login requests processed in < 2 seconds) / (Total number of login requests)
+- **SLO 3**: **SLI Type**: Latency  
+  **SLI Specification**: Proportion of database queries completed in < 500 milliseconds.  
+  **SLI Formula**:  
+  `SLI = (Number of successful queries completed in < 500 milliseconds) / (Total number of queries)`
 
-      - SLO 2: SLI Type: Latency
-          
-           SLI Specification: Proportion of money transfer transactions completed in < 3 seconds.
+- **SLO 4**: **SLI Type**: Availability  
+  **SLI Specification**: Proportion of successful HTTP requests.  
+  **SLI Formula**:  
+  `SLI = (Number of successful HTTP requests) / (Total number of HTTP requests)`
 
-           SLI = (Number of successful transactions completed in < 3 seconds) / (Total number of transactions)
-
-      - SLO 3: SLI Type: Latency
-
-           SLI Specification: Proportion of database queries completed in < 500 milliseconds.
-
-           SLI = (Number of successful queries completed in < 500 milliseconds) / (Total number of queries)
-
-      - SLO 4: SLI Type: Availability
-           
-           SLI Specification: Proportion of successful HTTP requests.
-
-           SLI = (Number of successful HTTP requests) / (Total number of HTTP requests)
-
-      - SLO 5: SLI Type: Availability
-           
-           SLI Specification: System uptime maintained at or above 99.9%.
-
-           SLI = (Total uptime minutes) / (Total minutes in the month)
+- **SLO 5**: **SLI Type**: Availability  
+  **SLI Specification**: System uptime maintained at or above 99.9%.  
+  **SLI Formula**:  
+  `SLI = (Total uptime minutes) / (Total minutes in the month)`
 
 - Outline the Azure services that will be used for the monitoring strategy:
   - Azure Monitor
@@ -674,6 +671,128 @@ Sustainability was not a primary focus during the MVP phase, as the project prio
 ### Summary
 
 The IE Bank application infrastructure adheres to the Azure Well-Architected Framework, ensuring a secure, reliable, and efficient system. By leveraging Azure's robust services and best practices, the design supports scalability, performance, and operational excellence, meeting both current needs and future growth.
+
+## 12-Factor App Design
+
+### Overview
+
+The 12-Factor App methodology provides a set of best practices for building modern, scalable, and maintainable cloud-native applications. The IE Bank MVP adheres to these principles to ensure reliability, scalability, and ease of deployment across environments. Below is how each of the 12 factors is applied in the design and implementation of the product.
+
+---
+
+### 1. Codebase
+**A single codebase tracked in version control, with multiple deployments.**  
+**Implementation**:
+- 2 GitHub repositories contains the code for the frontend (Vue.js), backend (Python Flask).
+- Modular infrastructure code is stored in the a separate repository, leveraging Azure Bicep.
+- **Branching strategy**: Feature branches for development; main for production.
+
+---
+
+### 2. Dependencies
+**Explicitly declare and isolate dependencies.**  
+**Implementation**:
+- Backend dependencies are managed with `pip` and `requirements.txt`.
+- Frontend dependencies are managed with `npm` and `package.json`.
+- Containers ensure isolated environments, with images built using Docker.
+
+---
+
+### 3. Configuration
+**Store configuration in the environment, not in the code.**  
+**Implementation**:
+- Sensitive credentials (e.g., database connections, API keys) are stored in Azure Key Vault.
+- Environment-specific configurations are handled via Bicep parameter files.
+- Application settings (e.g., UAT vs. Production) are managed using Azure App Service settings.
+
+---
+
+### 4. Backing Services
+**Treat backing services (e.g., databases, queues) as attached resources.**  
+**Implementation**:
+- The PostgreSQL database is provisioned as a managed Azure resource.
+- Secrets for database and other external services are integrated through Key Vault.
+- Backend services connect dynamically to resources based on the environment.
+
+---
+
+### 5. Build, Release, Run
+**Separate the build and run stages for deployment.**  
+**Implementation**:
+- **Build**: CI pipelines build Docker images for the backend and frontend.
+- **Release**: Release artifacts are deployed to UAT for validation.
+- **Run**: After validation, production deployments are triggered automatically.
+
+---
+
+### 6. Processes
+**Execute the app as one or more stateless processes.**  
+**Implementation**:
+- The backend is stateless and scalable, with session data stored in the database.
+- Frontend interactions rely on APIs for dynamic data, with no local storage of state.
+
+---
+
+### 7. Port Binding
+**Expose services via port binding.**  
+**Implementation**:
+- Backend runs on a containerized App Service, exposing an HTTP endpoint.
+- Azure Static Web Apps serve the frontend, communicating with the backend via RESTful APIs.
+
+---
+
+### 8. Concurrency
+**Scale out via the process model.**  
+**Implementation**:
+- Autoscaling is enabled for the App Service and PostgreSQL database in Production.
+- Azure's built-in load balancer supports concurrent requests without manual configuration.
+
+---
+
+### 9. Disposability
+**Maximize robustness with fast startup and graceful shutdown.**  
+**Implementation**:
+- Containers ensure consistent and fast startups.
+- Graceful termination signals (e.g., SIGTERM) are handled to ensure clean resource release.
+
+---
+
+### 10. Dev/Prod Parity
+**Keep development, staging, and production as similar as possible.**  
+**Implementation**:
+- DTAP environments are provisioned using the same Bicep templates for consistency.
+- Azure Monitor and Application Insights provide similar telemetry in all environments.
+
+---
+
+### 11. Logs
+**Treat logs as event streams.**  
+**Implementation**:
+- Application and infrastructure logs are centralized in Log Analytics Workspace.
+- Application Insights captures performance and error telemetry for both frontend and backend.
+
+---
+
+### 12. Admin Processes
+**Run admin/management tasks as one-off processes.**  
+**Implementation**:
+- Database migrations are executed as one-off commands in the CI/CD pipeline.
+- Monitoring and incident responses leverage Azure CLI and automated scripts.
+
+---
+
+### Benefits for IE Bank MVP
+
+- **Scalability**: The 12-Factor methodology supports horizontal scaling and seamless environment transitions.
+- **Maintainability**: Clear separation of concerns simplifies debugging and onboarding.
+- **Resilience**: Decoupling of services and statelessness ensures robust failover mechanisms.
+
+---
+
+### Summary
+
+By aligning with the 12-Factor App principles, the IE Bank MVP achieves a cloud-native design optimized for modern application development. This foundation ensures the application is scalable, maintainable, and well-suited for continuous integration and delivery.
+
 
 <div class="previous-section-link"> 
   <a href="assumptions_constraints.html">Previous</a>
