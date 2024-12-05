@@ -82,7 +82,46 @@ This section provides an overview of the general system architecture and its com
 
 ## System Context
 
-- 
+The **IE Bank Application** is a cloud-native banking platform designed to provide a secure, scalable, and user-friendly experience for managing financial accounts and transactions. Built on Microsoft Azure, the application follows a modular architecture to ensure flexibility and alignment with modern DevOps practices.
+
+---
+
+#### **Users and Roles**
+
+1. **End Users**:
+   - Access the system via a responsive Vue.js frontend to view account balances, manage transactions, and track financial activities.
+2. **Admins**:
+   - Use the admin interface to manage user accounts, oversee transactions, and ensure compliance with security and operational standards.
+
+---
+
+#### **System Components**
+
+1. **Frontend**:
+   - Hosted on Azure Static Web Apps, the Vue.js frontend provides a fast, reliable user interface that is globally distributed for performance and scalability.
+2. **Backend**:
+   - A Python-based API hosted on Azure App Service for Containers, responsible for business logic, user authentication, and transaction processing.
+3. **Database**:
+   - Azure Database for PostgreSQL serves as the primary data store, offering fault tolerance, automatic backups, and high performance for financial data.
+4. **Monitoring and Security**:
+   - Application Insights provide system observability and telemetry for proactive issue resolution.
+   - Azure Key Vault ensures the secure storage of sensitive credentials, such as database connection strings and API keys.
+5. **Infrastructure Components**
+  - Infrastructure as Code (IaC): The infrastructure is provisioned using Azure Bicep templates, enabling consistent, modular, and automated deployments across environments.
+  - The system is deployed in isolated Development, Testing, Acceptance, and Production environments, ensuring controlled progression through the software lifecycle.
+  - Container Management: Azure Container Registry (ACR) securely stores and manages Docker images for the backend API, with seamless integration into CI/CD pipelines.
+
+---
+
+#### **Interactions and Flows**
+
+- Users and admins interact with the system via secure HTTPS endpoints, authenticated using Azure AD or token-based authentication.
+- The backend communicates with the database to retrieve and update account and transaction details, ensuring data consistency and security.
+
+---
+### Sumary
+By leveraging Azure services and adhering to the Azure Well-Architected Framework, the IE Bank Application delivers a robust, efficient, and scalable solution for modern banking needs.
+
 
 ## Infrastructure Architecture Design
 The infrastructure for the IE Bank MVP has been carefully designed to ensure scalability, security, and cost-effectiveness while meeting the functional and non-functional requirements of the application. We have adopted a cloud-native approach, leveraging Microsoft Azure services to create a robust DTAP (Development, Testing, Acceptance, Production) environment strategy. This design aligns with industry best practices and the Azure Well-Architected Framework.
