@@ -72,7 +72,7 @@ This section provides an overview of the general system architecture and its com
   - [Monitoring Strategy](#monitoring-strategy-1)
   - [Service Mapping Design](#service-mapping-design)
 - [Well Architected Framework Design](#well-architected-framework-design)
-  - [1. Reliability](#reliability)
+  - [1. Reliability](#1.-reliability)
   - [2. Security](#security)
   - [3. Cost Optimization](#cost-optimization)
   - [4. Performance Efficiency](#performance-efficiency)
