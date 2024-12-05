@@ -72,11 +72,11 @@ This section provides an overview of the general system architecture and its com
   - [Monitoring Strategy](#monitoring-strategy-1)
   - [Service Mapping Design](#service-mapping-design)
 - [Well Architected Framework Design](#well-architected-framework-design)
-  - [1. Reliability](#1.-reliability)
-  - [2. Security](#security)
-  - [3. Cost Optimization](#cost-optimization)
-  - [4. Performance Efficiency](#performance-efficiency)
-  - [5. Operational Excellence](#operational-excellence)
+  - [1. Reliability](#1-reliability)
+  - [2. Security](#2-security)
+  - [3. Cost Optimization](#3-cost-optimization)
+  - [4. Performance Efficiency](#4-performance-efficiency)
+  - [5. Operational Excellence](#5-operational-excellence)
 
 ## System Context
 
@@ -137,7 +137,109 @@ The infrastructure is defined using **Azure Bicep**, a modular IaC approach that
 
 ## Environments Design
 
-- 
+### Overview
+
+The environment design ensures a structured and consistent approach to deploying and managing the IE Bank application across its lifecycle. By adopting the **DTAP (Development, Testing, Acceptance, Production)** strategy, we maintain clear boundaries between environments, enabling controlled deployments, thorough testing, and high confidence in production stability. Each environment is configured to reflect its unique purpose, from experimentation in Development to secure and optimized setups in Production.
+
+---
+
+### DTAP Environments and Configurations
+
+Each environment is deployed within its respective Azure Resource Group, with configurations tailored to its specific role. Below are the key characteristics and services for each environment:
+
+**1. Development Environment**
+- **Purpose**: For developers to experiment, implement, and validate features.
+- **Resource Group**: `BCSAI2024-DEVOPS-STUDENTS-A-DEV`
+- **Services**:
+  - **Azure Static Web Apps**: Hosts the frontend for feature testing.
+  - **Azure App Service**: Runs the containerized backend with frequent updates.
+  - **Azure Database for PostgreSQL**: Basic configuration for cost-effectiveness.
+  - **Azure Key Vault**: Stores secrets (e.g., database credentials).
+  - **Azure Monitor**: Tracks performance metrics and logs during development.
+- **Deployment**:
+  - Triggered by GitHub feature branch commits using CI pipelines.
+  - Frequent deployments ensure real-time validation of new code.
+
+---
+
+**2. Testing/UAT Environment**
+- **Purpose**: Facilitates functional, integration, and acceptance testing.
+- **Resource Group**: `BCSAI2024-DEVOPS-STUDENTS-A-UAT`
+- **Services**:
+  - **Azure Static Web Apps**: Hosts a near-production frontend for stakeholder previews.
+  - **Azure App Service**: Deploys a stable backend container for testing.
+  - **Azure Database for PostgreSQL**: Uses a configuration that mirrors production settings.
+  - **Azure Key Vault**: Securely stores credentials for the UAT setup.
+  - **Azure Monitor**: Captures logs and metrics for test validation.
+  - **Application Insights**: Collects telemetry for backend/frontend performance testing.
+- **Deployment**:
+  - Triggered by Pull Requests to the main branch.
+  - Tests are executed as GitHub status checks, and only passing tests allow a merge.
+
+---
+
+**3. Production Environment**
+- **Purpose**: Serves the live application to end-users with high reliability and performance.
+- **Resource Group**: `BCSAI2024-DEVOPS-STUDENTS-A-PROD`
+- **Services**:
+  - **Azure Static Web Apps**: Fully optimized for end-user traffic.
+  - **Azure App Service**: Scaled container backend for reliability under high loads.
+  - **Azure Database for PostgreSQL**: High-availability configuration with backups.
+  - **Azure Key Vault**: Enforces stringent access policies for secrets management.
+  - **Azure Monitor and Log Analytics Workspace**: Provides centralized logging and alerting.
+  - **Application Insights**: Monitors application health, latency, and errors in real time.
+- **Deployment**:
+  - Triggered by merging successfully tested code from UAT.
+  - Deployment follows automated CI/CD workflows with rollback capabilities.
+
+---
+
+### Configuration Differentiation
+
+Environment-specific configurations are managed through Azure Bicep parameter files. These parameter files ensure consistency in deployment while allowing flexibility for each environment's unique needs.
+
+| **Service**         | **Development**          | **UAT**                         | **Production**                     |
+|----------------------|--------------------------|----------------------------------|-------------------------------------|
+| **App Service Plan** | Basic Tier               | Standard Tier                   | Premium Tier                       |
+| **PostgreSQL DB**    | Single Zone             | Zone-Redundant                  | Zone-Redundant with Backups        |
+| **Key Vault Policies** | Developer Access        | Limited Stakeholder Access       | Restricted Production Access       |
+| **Scaling Rules**    | Manual Scaling          | Auto-Scaling with Alerts        | Auto-Scaling with Redundancy       |
+| **Monitoring**       | Minimal Logs            | Logs + Metrics                  | Full Monitoring + Alerts           |
+
+---
+
+### CI/CD Integration Across Environments
+
+- **Development**: 
+  - Feature branch commits automatically trigger builds and deploy to the Development environment.
+- **UAT**:
+  - Pull requests trigger test workflows and deploy to UAT for approval.
+- **Production**:
+  - Merges to the main branch trigger deployments to Production after passing all automated checks.
+
+---
+
+### Security and Isolation
+
+- Each environment operates in its own Azure Resource Group, ensuring isolation.
+- Access policies vary across environments, with stricter controls in UAT and Production.
+- Secrets are stored securely in Azure Key Vault, with automated rotation and limited access per environment.
+
+---
+
+### Benefits of the DTAP Approach
+
+- **Consistency**: Ensures repeatable and predictable deployments.
+- **Reduced Risk**: Isolated environments prevent testing or development issues from affecting Production.
+- **Scalability**: Enables gradual scaling and tuning as code progresses from Development to Production.
+- **Stakeholder Confidence**: UAT provides a near-live preview of features before deployment.
+
+---
+
+### Summary
+
+The DTAP environment strategy ensures a robust and methodical deployment process, minimizing risks and maximizing quality. By maintaining environment-specific configurations and leveraging Azure's cloud capabilities, the IE Bank MVP is poised for secure and seamless operations at every stage.
+
 
 ## Release Strategy
 
@@ -561,7 +663,7 @@ Some design decisions involve tradeoffs to balance between the framework pillars
 - **Performance vs. Cost**:
   - Autoscaling ensures optimal performance during peak loads, but may incur additional costs.
 
-### Unnadressed Pillar - Sustainability
+### Unnadressed Pillar - Sustainability 
 **Why Not Addressed?**
 Sustainability was not a primary focus during the MVP phase, as the project prioritized performance, security, and cost management. The effort required to evaluate and optimize environmental impact will be deferred to later stages.
 
