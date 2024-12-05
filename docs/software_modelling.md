@@ -70,6 +70,7 @@ This section covers the software modelling aspects for the IE BANK project.
 
 ## Entity Relationship Diagram
 
+
 - 
 
 ## Data Flow Diagram
