@@ -72,11 +72,11 @@ This section provides an overview of the general system architecture and its com
   - [Monitoring Strategy](#monitoring-strategy-1)
   - [Service Mapping Design](#service-mapping-design)
 - [Well Architected Framework Design](#well-architected-framework-design)
-  - [Reliability](#reliability)
-  - [Security](#security)
-  - [Cost Optimization](#cost-optimization)
-  - [Operational Excellence](#operational-excellence)
-  - [Performance Efficiency](#performance-efficiency)
+  - [1. Reliability](#reliability)
+  - [2. Security](#security)
+  - [3. Cost Optimization](#cost-optimization)
+  - [4. Performance Efficiency](#performance-efficiency)
+  - [5. Operational Excellence](#operational-excellence)
 
 ## System Context
 
@@ -133,111 +133,6 @@ The infrastructure is defined using **Azure Bicep**, a modular IaC approach that
 3. **Parameter Files:**
 - Separate parameter files for Development, UAT, and Production.
 - Enables consistent deployment across all environments with minimal changes.
-
-
-## Well Architected Framework Design
-
-The design of the IE Bank application leverages the Microsoft Azure Well-Architected Framework to ensure it meets high standards of reliability, security, performance, cost efficiency, and operational excellence. Each design decision has been carefully evaluated to address both functional and non-functional requirements while ensuring scalability and resilience.
-
-### 1. Reliability
-
-Reliability is critical to ensure the IE Bank MVP performs its intended functions without failure, especially in Production.
-
-**Design Features:**
-- **Azure App Service Plan**:
-  - Uses a zone-redundant configuration for high availability in Production.
-  - Autoscaling enabled based on CPU and memory utilization to handle peak loads.
-- **Azure Database for PostgreSQL**:
-  - Configured in zone-redundant mode for fault tolerance.
-  - Automatic backups with point-in-time recovery enabled.
-- **Monitoring and Alerts**:
-  - Log analytics provide real-time insights into application performance.
-  - Alerts notify teams of potential issues, enabling swift remediation.
-
-### 2. Security
-
-Security ensures the protection of sensitive data, such as user credentials and financial transactions.
-
-**Design Features:**
-- **Azure Key Vault**:
-  - Manages secrets, connection strings, and sensitive credentials.
-  - Integrated with App Services and GitHub workflows for secure CI/CD pipelines.
-- **GitHub Advanced Security**:
-  - CodeQL scans for vulnerabilities in backend (Python) and frontend (Vue.js).
-  - Dependabot keeps dependencies up-to-date, reducing exposure to known vulnerabilities.
-- **Azure Networking**:
-  - Restricts inbound traffic using Application Gateway and Network Security Groups (NSGs).
-- **Encryption**:
-  - Data at rest is encrypted with Azure-managed keys in PostgreSQL.
-  - Data in transit uses HTTPS and TLS for frontend-backend communication.
-
-### 3. Cost Optimization
-
-Cost optimization ensures efficient use of Azure resources while maintaining performance and reliability.
-
-**Design Features:**
-- **Resource Scaling**:
-  - Development and UAT environments use lower-cost service tiers.
-  - Production leverages autoscaling to adjust resource usage based on traffic demands.
-- **Static Web Hosting**:
-  - Vue.js frontend is hosted on Azure Static Web Apps, minimizing hosting costs.
-- **Efficient Resource Utilization**:
-  - Consolidated logging and monitoring using a single Log Analytics Workspace.
-  - Scheduled database scaling during non-peak hours for Development and UAT.
-
-
-### 4. Performance Efficiency
-
-Performance efficiency ensures the application can handle current and future workloads effectively.
-
-**Design Features:**
-- **Azure App Service Plan**:
-  - Configured for autoscaling based on CPU and memory utilization.
-  - Optimized for container workloads with Linux App Services.
-- **Azure Database for PostgreSQL**:
-  - Uses optimized query execution plans and indexing to reduce latency.
-- **Application Insights**:
-  - Tracks application performance metrics (e.g., response times, request rates).
-  - Identifies bottlenecks in real-time for both frontend and backend.
-
-
-### 5. Operational Excellence
-
-Operational excellence ensures smooth application deployment and maintenance, minimizing downtime and maximizing development productivity.
-
-**Design Features:**
-- **CI/CD Pipelines**:
-  - GitHub Actions automate deployments across Development, UAT, and Production.
-  - Includes tests for code quality, security, and functionality.
-- **Infrastructure as Code (IaC)**:
-  - Bicep templates modularize and automate resource provisioning.
-- **Monitoring and Incident Response**:
-  - Azure Monitor and Application Insights provide real-time visibility.
-  - Alerts integrated with Slack via ChatOps for rapid incident response.
-
-
-
-### Design Tradeoffs
-
-Some design decisions involve tradeoffs to balance between the framework pillars:
-- **Cost vs. Reliability**:
-  - UAT and Production environments prioritize reliability with higher-tier resources.
-  - Development uses cost-effective options like basic-tier PostgreSQL and App Services.
-- **Performance vs. Cost**:
-  - Autoscaling ensures optimal performance during peak loads, but may incur additional costs.
-
-### Unnadressed Pillar - Sustainability
-**Why Not Addressed?**
-Sustainability was not a primary focus during the MVP phase, as the project prioritized performance, security, and cost management. The effort required to evaluate and optimize environmental impact will be deferred to later stages.
-
-**Future Plans:**
-- Incorporate tools like Azure Sustainability Calculator to evaluate the carbon footprint of the application.
-- Optimize resource usage further, such as reducing idle resource consumption in non-production environments and leveraging green regions where available.
-
-
-### Summary
-
-The IE Bank application infrastructure adheres to the Azure Well-Architected Framework, ensuring a secure, reliable, and efficient system. By leveraging Azure's robust services and best practices, the design supports scalability, performance, and operational excellence, meeting both current needs and future growth.
 
 
 ## Environments Design
@@ -578,26 +473,105 @@ As same as the SLA, this incident response plan will be reviewed quarterly. 
 
 By using this plan, devious IE bank ensures an effective response to incidents, minimizing disruptions and adhering to SLA commitments.
 
+## Well Architected Framework Design
 
-### Reliability
+The design of the IE Bank application leverages the Microsoft Azure Well-Architected Framework to ensure it meets high standards of reliability, security, performance, cost efficiency, and operational excellence. Each design decision has been carefully evaluated to address both functional and non-functional requirements while ensuring scalability and resilience.
 
-- 
+### 1. Reliability
 
-### Security
+Reliability is critical to ensure the IE Bank MVP performs its intended functions without failure, especially in Production.
 
-- 
+**Design Features:**
+- **Azure App Service Plan**:
+  - Uses a zone-redundant configuration for high availability in Production.
+  - Autoscaling enabled based on CPU and memory utilization to handle peak loads.
+- **Azure Database for PostgreSQL**:
+  - Configured in zone-redundant mode for fault tolerance.
+  - Automatic backups with point-in-time recovery enabled.
+- **Monitoring and Alerts**:
+  - Log analytics provide real-time insights into application performance.
+  - Alerts notify teams of potential issues, enabling swift remediation.
 
-### Cost Optimization
+### 2. Security
 
-- 
+Security ensures the protection of sensitive data, such as user credentials and financial transactions.
 
-### Operational Excellence
+**Design Features:**
+- **Azure Key Vault**:
+  - Manages secrets, connection strings, and sensitive credentials.
+  - Integrated with App Services and GitHub workflows for secure CI/CD pipelines.
+- **GitHub Advanced Security**:
+  - CodeQL scans for vulnerabilities in backend (Python) and frontend (Vue.js).
+  - Dependabot keeps dependencies up-to-date, reducing exposure to known vulnerabilities.
+- **Azure Networking**:
+  - Restricts inbound traffic using Application Gateway and Network Security Groups (NSGs).
+- **Encryption**:
+  - Data at rest is encrypted with Azure-managed keys in PostgreSQL.
+  - Data in transit uses HTTPS and TLS for frontend-backend communication.
 
-- 
+### 3. Cost Optimization
 
-### Performance Efficiency
+Cost optimization ensures efficient use of Azure resources while maintaining performance and reliability.
 
-- 
+**Design Features:**
+- **Resource Scaling**:
+  - Development and UAT environments use lower-cost service tiers.
+  - Production leverages autoscaling to adjust resource usage based on traffic demands.
+- **Static Web Hosting**:
+  - Vue.js frontend is hosted on Azure Static Web Apps, minimizing hosting costs.
+- **Efficient Resource Utilization**:
+  - Consolidated logging and monitoring using a single Log Analytics Workspace.
+  - Scheduled database scaling during non-peak hours for Development and UAT.
+
+### 4. Performance Efficiency
+
+Performance efficiency ensures the application can handle current and future workloads effectively.
+
+**Design Features:**
+- **Azure App Service Plan**:
+  - Configured for autoscaling based on CPU and memory utilization.
+  - Optimized for container workloads with Linux App Services.
+- **Azure Database for PostgreSQL**:
+  - Uses optimized query execution plans and indexing to reduce latency.
+- **Application Insights**:
+  - Tracks application performance metrics (e.g., response times, request rates).
+  - Identifies bottlenecks in real-time for both frontend and backend.
+
+
+### 5. Operational Excellence
+
+Operational excellence ensures smooth application deployment and maintenance, minimizing downtime and maximizing development productivity.
+
+**Design Features:**
+- **CI/CD Pipelines**:
+  - GitHub Actions automate deployments across Development, UAT, and Production.
+  - Includes tests for code quality, security, and functionality.
+- **Infrastructure as Code (IaC)**:
+  - Bicep templates modularize and automate resource provisioning.
+- **Monitoring and Incident Response**:
+  - Azure Monitor and Application Insights provide real-time visibility.
+  - Alerts integrated with Slack via ChatOps for rapid incident response.
+
+### Design Tradeoffs
+
+Some design decisions involve tradeoffs to balance between the framework pillars:
+- **Cost vs. Reliability**:
+  - UAT and Production environments prioritize reliability with higher-tier resources.
+  - Development uses cost-effective options like basic-tier PostgreSQL and App Services.
+- **Performance vs. Cost**:
+  - Autoscaling ensures optimal performance during peak loads, but may incur additional costs.
+
+### Unnadressed Pillar - Sustainability
+**Why Not Addressed?**
+Sustainability was not a primary focus during the MVP phase, as the project prioritized performance, security, and cost management. The effort required to evaluate and optimize environmental impact will be deferred to later stages.
+
+**Future Plans:**
+- Incorporate tools like Azure Sustainability Calculator to evaluate the carbon footprint of the application.
+- Optimize resource usage further, such as reducing idle resource consumption in non-production environments and leveraging green regions where available.
+
+### Summary
+
+The IE Bank application infrastructure adheres to the Azure Well-Architected Framework, ensuring a secure, reliable, and efficient system. By leveraging Azure's robust services and best practices, the design supports scalability, performance, and operational excellence, meeting both current needs and future growth.
 
 <div class="previous-section-link"> 
   <a href="assumptions_constraints.html">Previous</a>
