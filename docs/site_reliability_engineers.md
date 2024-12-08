@@ -66,8 +66,8 @@ Welcome to the Site Reliability Engineer's section of the IE BANK documentation.
 - [Incident Response Design](#incident-response-design)
 - [Capacity Design](#capacity-design)
 - [Performance Efficiency](#performance-efficiency-design)
-- [Cost Opimisation and FinOps](#cost-opimisation-design)
-- [Operational Excellence and Release Engineering](#operational-excellence-&-release-engineering-design)
+- [Cost Optimisation and FinOps](#cost-optimisation-design)
+- [Operational Excellence and Release Engineering](#operational-excellence-and-release-engineering-design)
 - [Site Reliability Engineering Design](#reliability-design)
 
 ---
@@ -616,7 +616,7 @@ Continuous Improvement (CI):
 
 * * * * *
 
-## Operational Excellence & Release Engineering Design 
+## Operational Excellence and Release Engineering Design 
 --------------------------------------------------------
 
 DevOps Culture & Team Structure:
