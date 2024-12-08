@@ -120,20 +120,21 @@ The Product Vision Board provides a clear and concise visualization of the produ
 **Context & Goals:**  
 The Devious devops group is building the IE Bank, a fintech startup aiming to deliver an intuitive and secure online banking platform. The MVP focuses on essential features that allow customers to manage their accounts, view transactions, register as new users, and perform basic financial operations. Simultaneously, the MVP must also accommodate administrative functions such as user management, ensuring that an internal administrator can effectively control and maintain the system. The overarching goal is to provide a stable, secure, and functional product that can be released to production with confidence, serving as the foundation for future enhancements.
 
+In the inital iteration, a user was able to create bank accounts with different details such as Name, Currency, Country and Balance. The functionality was limited to a single user, and there was no authentication or authorization. 
+
+The initial iteration was also only developed by a single person, so lots of the improvements in the MVP are to make the product maintainable and scalable by multiple developers, introducing a CI/CD pipeline and a proper Agile SCRUM project structure.
+
 ### Core Functionalities
 
 **1. Multi-Account Management:**  
 From the initial iteration, the system already supports basic CRUD (Create, Read, Update, Delete) operations for user accounts
 
-In the inital iteration, a user was able to create bank accounts with different details such as Name, Currency, Country and Balance. 
-
- In the MVP, this functionality remains intact and is extended with improved user registration, login, and account operation capabilities. Each user can have one or more bank accounts, each identified by a unique account number.
+In this MVP, this functionality remains intact and is extended with introducing authentication, user registration, login, and account operation capabilities. Each user can have one or more bank accounts, each identified by a unique account number, and a user is also able to transfer funds between their accounts.
 
 **2. Administrator Portal – User Management (Admin Portal):**  
-The MVP introduces an administrator portal designed for internal bank administrators.  
+The MVP introduces an administrator portal designed for internal bank administrators, to provide a straightforward, secure management interface to maintain user integrity and respond to operational needs.
 - **Default Admin Account (FR 1):** A predefined admin user (with a secure default username and password) will be available. This admin account must be able to log in to the admin portal.  
 - **Admin User CRUD Operations (FR 2):** Once logged in, the admin can view a list of all registered bank users. The admin can create new users, update existing user information (including resetting passwords), and delete users who no longer need access.  
-- **Goal:** Provide a straightforward, secure management interface to maintain user integrity and respond to operational needs.
 
 **3. User Portal – Account Management System (User Portal):**  
 The MVP refines the user-facing portal where customers interact with their personal accounts:  
