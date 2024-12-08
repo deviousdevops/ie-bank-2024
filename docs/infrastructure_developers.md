@@ -226,7 +226,7 @@ Below is the **simplified infrastructure diagram** with arrows showing resource 
           +---------------------------+
           |  Azure Application Insights| <-- Monitoring & Telemetry
           +---------------------------+
-
+```
 1. **Environment-Specific Configurations**:  
    Each environment is configured using dedicated parameter files:
    - `dev.parameters.json`
