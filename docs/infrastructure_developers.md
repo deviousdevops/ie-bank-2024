@@ -33,7 +33,7 @@ The infrastructure for **devious_devops bank** is organized into modular **Bicep
 ---
 
 ### **Key Principles**
-- **Separation of Concerns**: Each Bicep module focuses on a specific Azure service (e.g., App Service, Key Vault, Database).
+- **Separation of Concerns**: Each Bicep module focuses on a specific Azure service (ex: App Service, Key Vault, Database).
 - **Reusability**: Modules are designed to work across **Development**, **UAT**, and **Production** environments.
 - **Maintainability**: Updates are isolated to individual modules, ensuring reduced risk of breaking dependencies.
 - **Scalability**: Additional services can be added seamlessly without modifying the entire infrastructure.
