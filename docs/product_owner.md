@@ -220,7 +220,7 @@ Below is a set of five high-level objectives aligned with a product’s growth a
 2. Reduce the average time to complete the registration process from 3 minutes to under 2 minutes.  
 3. Achieve at least a 4.0/5.0 average satisfaction score from new users (as measured by a post-onboarding survey).  
 4. Decrease new user onboarding-related bad server responses by 30%.  
-5. Increase security measures to decrease the number of fraudulent registrations by 50%.
+5. Increase security measures on onboarding to decrease the number of fraudulent registrations by 50%.
 
 ---
 
@@ -228,11 +228,11 @@ The objectives here can be better suplemented in the [Site Reliability Engineeri
 
 ### Objective 2: Enhance System Reliability and Performance  
 **Key Results:**  
-1. Maintain a 99.9% uptime of all core functionalities (login, account view, transfers) during business hours.  
-2. Reduce the average page load time on the user portal from 2.5s to under 1.5s.  
-3. Decrease the number of critical error logs in production by 50%.  
-4. Ensure the application can handle a load of 1,000 concurrent users with an average response time under 2 seconds.  
-5. Achieve 100% completion of performance testing scenarios covering peak load, stress, and endurance testing.
+1. Increase the percentage of successful login requests from 90% to 99%.
+2. Decrease the average time for a money transfer to complete from 3 seconds to under 2 seconds.
+3. Increase the number of concurrent users the application can handle from 100 to 1,000 with an average response time under 2 seconds.
+4. Decrease the number of critical error logs in production by 50%.
+5. Decrease the average page load time on the user portal from 2.5s to under 1.5s.
 
 ---
 
@@ -266,10 +266,10 @@ The objectives here can be better suplemented in the [Site Reliability Engineeri
 
 ---
 
-**How to Use These OKRs:**  
-- **Regular Review:** Assess progress against these key results every two weeks. Adjust strategies if metrics are not trending in the right direction.  
-- **Cross-Functional Collaboration:** Involve product owners, developers, designers, QA, DevOps, and support teams to ensure that everyone’s efforts are aligned with achieving these OKRs.  
-- **Incremental Improvement:** If targets seem consistently easy or hard to meet, calibrate accordingly in the next cycle.
+**OKR Usage:**  
+- **Regular Review:**  Our team will assess progress against these key results every two weeks. Adjust strategies if metrics are not trending in the right direction.  
+- **Cross-Functional Collaboration:** Our product owner, cloud architect, full stack developers, infrastructure engineers, site reliability engineers, and security engineer will ensure that everyone’s efforts are aligned with achieving these OKRs.  
+- **Incremental Improvement:** If targets seem consistently easy or hard to meet, our team will calibrate accordingly in the next cycle.
 
 ---
 
