@@ -74,7 +74,6 @@ Welcome to the Site Reliability Engineer's section of the IE BANK documentation.
 
 ## Service Level Agreement (SLA)
 
-Service Level Agreement for IE Bank
 -----------------------------------
 
 Effective Date: 08/11/2024\
