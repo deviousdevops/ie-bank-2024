@@ -436,8 +436,20 @@ The updated release strategy tightly integrates secure, efficient, and scalable 
 
 This section includes the diagrams for each use case and sequential models to illustrate the flow of data and interactions within the system.
 
-- **Use Case Diagrams**: [Use Case Diagrams URL]
-- **Sequential Model Diagrams**: [Sequential Model Diagrams URL]
+- **General Use Case and Seuential Diagrams**:
+![This is the use case diagram](images/ucsd1.png)
+![This is the use case diagram](images/ucsd10.png)
+
+- **User Use Case and Seuential Diagrams**:
+![This is the use case diagram](images/ucsd2.png)
+![This is the use case diagram](images/ucsd3.png)
+![This is the use case diagram](images/ucsd4.png)
+![This is the use case diagram](images/ucsd5.png)
+- **Admin Use Case and Seuential Diagrams**:
+![This is the use case diagram](images/ucsd6.png)
+![This is the use case diagram](images/ucsd7.png)
+![This is the use case diagram](images/ucsd8.png)
+![This is the use case diagram](images/ucsd9.png)
 
 ---
 
