@@ -28,17 +28,7 @@ Welcome to the **Infrastructure Developer Documentation** for **devious_devops b
 
 ### **Description of Modularization Strategy**
 
-The infrastructure for **devious_devops bank** is organized into modular **Bicep templates**. Each resource is encapsulated in its respective module, ensuring clean separation, reusability, and maintainability across different environments.
-
----
-
-### **Key Principles**
-- **Separation of Concerns**: Each Bicep module focuses on a specific Azure service (e.g., App Service, Key Vault, Database).
-- **Reusability**: Modules are designed to work across **Development**, **UAT**, and **Production** environments.
-- **Maintainability**: Updates are isolated to individual modules, ensuring reduced risk of breaking dependencies.
-- **Scalability**: Additional services can be added seamlessly without modifying the entire infrastructure.
-
----
+The infrastructure for **devious_devops bank** is modularized using **Azure Bicep** templates. Each major resource is encapsulated in its respective module to ensure reusability, scalability, and maintainability across different environments.
 
 ### **Bicep Modules Overview**
 
@@ -56,37 +46,17 @@ The infrastructure for **devious_devops bank** is organized into modular **Bicep
 
 ## **2. Azure Services and Configurations**
 
-This section details the Azure services provisioned using **Bicep templates**, including their configurations and how they are applied in **Development**, **UAT**, and **Production**.
-
----
-
 ### **Azure App Service and App Service Plan**
 
-**Purpose**:  
-Azure App Service hosts both the **frontend application** and the **backend API**.
-
-| **Environment** | **Frontend Name**     | **Backend Name**      | **App Service Plan SKU** |
-|------------------|-----------------------|-----------------------|--------------------------|
-| Development     | `devious-fe-dev`      | `devious-be-dev`      | B1 (Basic)               |
-| UAT             | `devious-fe-uat`      | `devious-be-uat`      | B1 (Basic)               |
-| Production      | `devious-fe-prod`     | `devious-be-prod`     | B1 (Basic)               |
-
-**Configuration**:
-- **Frontend**: Deployed using Node.js 18-LTS.
-- **Backend**: Deployed as a containerized application pulled from **Azure Container Registry (ACR)**.
+| **Environment** | **App Service Plan** | **Frontend Name**     | **Backend Name**      |
+|------------------|----------------------|-----------------------|-----------------------|
+| Development     | `devious-asp-dev`    | `devious-fe-dev`      | `devious-be-dev`      |
+| UAT             | `devious-asp-uat`    | `devious-fe-uat`      | `devious-be-uat`      |
+| Production      | `devious-asp-prod`   | `devious-fe-prod`     | `devious-be-prod`     |
 
 ---
 
 ### **Azure Database for PostgreSQL**
-
-**Purpose**:  
-Provides relational database management for the backend API.
-
-**Configuration**:
-- **Version**: PostgreSQL 15.
-- **Storage**: 32 GB.
-- **Backup Retention**: 7 days.
-- **Security**: Firewall allows only Azure services.
 
 | **Environment** | **Server Name**       | **Database Name**     |
 |------------------|-----------------------|-----------------------|
@@ -98,53 +68,45 @@ Provides relational database management for the backend API.
 
 ### **Azure Key Vault**
 
-**Purpose**:  
-Secures sensitive information like database credentials, API secrets, and encryption keys.
-
-**Features**:
-- Stores secrets like `DBPASS` and `SECRET_KEY`.
-- Integrated with **Azure RBAC** for access control.
-- Auditing enabled via Log Analytics.
+| **Environment** | **Key Vault Name**    |
+|------------------|-----------------------|
+| Development     | `devious-kv28-dev`    |
+| UAT             | `devious-kv28-uat`    |
+| Production      | `devious-kv28-prod`   |
 
 ---
 
 ### **Azure Log Analytics Workspace**
 
-**Purpose**:  
-Aggregates logs from various resources (App Service, PostgreSQL, and Key Vault) for centralized monitoring.
-
-**Configuration**:
-- **Retention**: 30 days.
-- Enables querying and insights for resource performance and diagnostics.
+| **Environment** | **Workspace Name**    |
+|------------------|-----------------------|
+| Development     | `devious-law-dev`     |
+| UAT             | `devious-law-uat`     |
+| Production      | `devious-law-prod`    |
 
 ---
 
 ### **Azure Application Insights**
 
-**Purpose**:  
-Provides telemetry and performance monitoring for the applications.
-
-**Key Features**:
-- Real-time application performance tracking.
-- Error logging and telemetry insights.
+| **Environment** | **Application Insights Name** |
+|------------------|-------------------------------|
+| Development     | `devious-ai-dev`              |
+| UAT             | `devious-ai-uat`              |
+| Production      | `devious-ai-prod`             |
 
 ---
 
 ### **Azure Static Web Apps**
 
-**Purpose**:  
-Deploys the frontend static application globally with CI/CD workflows.
-
-**Features**:
-- Automatic builds and deployments using GitHub Actions.
-- Free SSL certificates and CDN integration for global availability.
+| **Environment** | **Static Web App Name** |
+|------------------|-------------------------|
+| Development     | `devious-swa-dev`       |
+| UAT             | `devious-swa-uat`       |
+| Production      | `devious-swa-prod`      |
 
 ---
 
 ### **Azure Container Registry (ACR)**
-
-**Purpose**:  
-Stores Docker container images used by the backend API.
 
 | **Environment** | **Registry Name**     |
 |------------------|-----------------------|
@@ -158,8 +120,6 @@ Stores Docker container images used by the backend API.
 
 The **Infrastructure Release Strategy** leverages **Azure Bicep** templates and **GitHub Actions** to ensure automated, reliable, and consistent deployments across environments.
 
----
-
 ### **Release Workflow**
 
 1. **Environment-Specific Configurations**:  
@@ -171,13 +131,31 @@ The **Infrastructure Release Strategy** leverages **Azure Bicep** templates and 
 2. **CI/CD Automation**:  
    GitHub Actions automates:
    - **Validation** of Bicep templates.
-   - **Deployment** using Azure CLI:
-     ```bash
-     az deployment group create \
-       --resource-group <resource-group> \
-       --template-file main.bicep \
-       --parameters @prod.parameters.json
-     ```
+   - **Deployment** using Azure CLI.
+
+### **Deployment Commands**
+
+The following commands are used to deploy the infrastructure across environments:
+
+- **Development**:
+   ```bash
+   az deployment group create \
+     --resource-group devious-devops-law-dev \
+     --template-file main.bicep \
+     --parameters @dev.parameters.json
+- **UAT**:
+   ```bash
+   az deployment group create \
+     --resource-group devious-devops-law-dev \
+     --template-file main.bicep \
+     --parameters @dev.parameters.json
+- **Production**:
+   ```bash
+   az deployment group create \
+     --resource-group devious-devops-law-dev \
+     --template-file main.bicep \
+     --parameters @dev.parameters.json
+
 
 3. **Rollback Mechanisms**:
    - Idempotent templates ensure safe re-deployment.
