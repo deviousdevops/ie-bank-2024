@@ -455,6 +455,26 @@ The release strategy outlines the process, tools, and techniques used to release
 
 - **Release Strategy**: [[Release Strategy URL](https://deviousdevops.github.io/ie-bank-2024/cloud_architect.html#release-strategy)]
 
+### Inner Loop
+
+The inner loop refers to the development cycle where developers make changes to the codebase, run tests locally, and ensure that their changes work as expected before committing the code. This loop is focused on rapid feedback and iteration to improve code quality and functionality.
+
+1. *Code Changes*: Developers make changes to the codebase.
+2. *Local Testing*: Developers run tests locally to verify their changes.
+3. *Commit and Push*: Once satisfied, developers commit their changes and push them to the remote repository.
+
+### Outer Loop
+
+The outer loop refers to the CI/CD pipeline that takes over once the code is pushed to the remote repository. This loop ensures that the code is built, tested, and deployed in an automated and consistent manner across different environments.
+
+1. *Trigger Events*: The workflow is triggered by push events, pull requests to the main branch, or manual dispatches.
+2. *Build Job*: The code is checked out, dependencies are installed, and the code is linted and tested.
+3. *Artifact Upload*: The build artifacts are uploaded for use in deployment jobs.
+4. *Deploy to Development*: The build artifacts are downloaded, and the application is deployed to the Development environment.
+5. *Deploy to UAT*: The build artifacts are downloaded, and the application is deployed to the UAT environment.
+6. *Run Postman Tests*: Postman tests are run on the UAT environment to verify the deployment.
+7. *Deploy to Production*: The build artifacts are downloaded, and the application is deployed to the Production environment.
+
 ---
 
 ## Continuous Delivery (CD) Workflow for Frontend
