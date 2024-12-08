@@ -76,6 +76,11 @@ Welcome to the Cloud Architect's section of the IE BANK documentation. Below you
 
 The infrastructure for the IE Bank MVP has been carefully designed to ensure scalability, security, and cost-effectiveness while meeting the functional and non-functional requirements of the application. We have adopted a cloud-native approach, leveraging Microsoft Azure services to create a robust DTAP (Development, Testing, Acceptance, Production) environment strategy. This design aligns with industry best practices and the Azure Well-Architected Framework.
 
+### Infrastructure Architecture Diagram
+![This is the Infrastructure Architecture Diagram](images/infraDiagram.png)
+
+
+
 ### Key Azure Services and Architecture Components
 1. **Frontend Hosting** : **Azure Static Web Apps:**
   - A lightweight and cost-effective service to host the Vue.js frontend.
@@ -94,8 +99,8 @@ The infrastructure for the IE Bank MVP has been carefully designed to ensure sca
   - Ensures secure storage of secrets like PostgreSQL credentials and ACR authentication keys.
   - Integrated with the backend and deployment pipelines for automated secret retrieval.
 6. **Monitoring and Logging: Azure Alerts, Application Insights and Log Analytics Workspace**
-  - Log collection and metric analysis for infrastructure and application layers on Azure Workbooks.
-  - Azure Application Insights: Provides in-depth performance monitoring and telemetry for the frontend and backend. //ASK EDU
+  - Log collection and metric analysis for infrastructure and application layers on Azure Workbooks. Workbook content is in a workbooks folder and as a .json file, allowing us to make changes whenever we may want.
+  - Azure Application Insights: Provides in-depth performance monitoring and telemetry for the frontend and backend. 
 
 ### Environment Setup: DTAP Approach
 We have implemented a **DTAP** (Development, Testing, Acceptance, Production) environment strategy to ensure isolated and controlled stages for the application lifecycle.
@@ -147,6 +152,7 @@ Each environment is deployed within its respective Azure Resource Group, with co
   - **Azure Database for PostgreSQL**: Basic configuration for cost-effectiveness.
   - **Azure Key Vault**: Stores secrets (e.g., database credentials).
   - **Azure App Insights and Log Analytics**: Tracks performance metrics and logs during development.
+  - **Azure Logic App**: communicates between our alerts and slack to send alerts
 - **Deployment**:
   - Triggered by GitHub feature branch commits using CI pipelines.
   - Frequent deployments ensure real-time validation of new code.
