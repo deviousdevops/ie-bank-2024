@@ -267,6 +267,10 @@ Decision Approach
 
 -   Monthly reviews of monitoring reports will guide optimizations and capacity planning.
 
+Service Mapping:
+
+![Imagen de WhatsApp 2024-12-08 a las 18 18 19_7d447fb5](https://github.com/user-attachments/assets/cb39bfe1-cad7-485a-ab4e-1d5fc06cfb96)
+
 ## Incident Response Design
 
 Version: 1.0
