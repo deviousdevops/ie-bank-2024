@@ -151,6 +151,51 @@ The CD workflow for the backend describes the deployment pipeline and its steps 
 
 - **CD Workflow for Backend**: [CD Workflow for Backend URL]
 
+### Deploy to Development Environment
+- *Runs on*: ubuntu-latest
+- *Needs*: build
+- *Environment*: Development
+- *Steps*:
+  1. Download the build artifact from the build job.
+  2. Log in to Azure.
+  3. Get ACR credentials from the Dev Key Vault.
+  4. Build and push the Docker image to the development ACR.
+  5. Deploy the Docker image to the Azure Web App for Development.
+
+### Deploy to UAT Environment
+- *Runs on*: ubuntu-latest
+- *Needs*: build
+- *Environment*: UAT
+- *Steps*:
+  1. Download the build artifact from the build job.
+  2. Log in to Azure.
+  3. Get ACR credentials from the UAT Key Vault.
+  4. Build and push the Docker image to the UAT ACR.
+  5. Deploy the Docker image to the Azure Web App for UAT.
+
+### Deploy to Production Environment
+- *Runs on*: ubuntu-latest
+- *Needs*: build
+- *Environment*: Production
+- *Steps*:
+  1. Download the build artifact from the build job.
+  2. Log in to Azure.
+  3. Get ACR credentials from the Prod Key Vault.
+  4. Build and push the Docker image to the production ACR.
+  5. Deploy the Docker image to the Azure Web App for Production.
+
+### Run Postman Tests on UAT Environment
+- *Runs on*: ubuntu-latest
+- *Needs*: deploy-uat
+- *Environment*: UAT
+- *Steps*:
+  1. Checkout the repository.
+  2. Set up Node.js.
+  3. Install Newman (Postman CLI).
+  4. Fetch the Postman collection.
+  5. Fetch the Postman environment.
+  6. Run the Postman tests using Newman.
+
 ---
 
 Feel free to explore each section for detailed documentation.
