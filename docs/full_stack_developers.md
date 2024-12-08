@@ -71,7 +71,13 @@ Welcome to the Full Stack Developer's section of the IE BANK documentation. Belo
 
 ## Git Feature Branch Strategy
 
-This section covers the Git feature branch strategy, describing how the team manages feature branches and the configuration applied in GitHub to implement this strategy.
+This section covers the Git feature branch strategy, describing how the team manages feature branches and the configuration applied in GitHub to implement this strategy. Our strategy consits of:
+
+- Protecting the main branch with GitHub branch policies
+
+- Use short-living feature branches for new code development (give each feature branch a name representative of the new code being developed)
+
+- Integrate the code soon via Pull Request to the main branch. Other person in the team needs to review a approve.
 
 - **Git Feature Branch Strategy**: [[Git Feature Branch Strategy URL](https://github.com/deviousdevops/ie-bank-fe-2024/settings/rules/2893529)]
 
