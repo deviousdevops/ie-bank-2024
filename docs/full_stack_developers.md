@@ -63,7 +63,6 @@ Welcome to the Full Stack Developer's section of the IE BANK documentation. Belo
 - [Continuous Integration (CI) Workflow for Frontend](#continuous-integration-ci-workflow-for-frontend)
 - [Continuous Integration (CI) Workflow for Backend](#continuous-integration-ci-workflow-for-backend)
 - [Test/Behavior Driven Development Strategy](#test-behavior-driven-development-strategy)
-- [Inner Loop and Outer Loop Definition](#inner-loop-and-outer-loop-definition)
 - [Release Strategy](#release-strategy)
 - [Continuous Delivery (CD) Workflow for Frontend](#continuous-delivery-cd-workflow-for-frontend)
 - [Continuous Delivery (CD) Workflow for Backend](#continuous-delivery-cd-workflow-for-backend)
@@ -99,14 +98,6 @@ This section details the CI workflow for the backend, highlighting the build ste
 The Test/Behavior Driven Development (TDD/BDD) strategy defines how the team designs tests and selects User Stories to drive development through testing.
 
 - **TDD/BDD Strategy**: [TDD/BDD Strategy URL]
-
----
-
-## Inner Loop and Outer Loop Definition
-
-This section explains the concept of inner and outer loops, defining how they apply to the development and testing processes for IE Bank.
-
-- **Inner Loop and Outer Loop Definition**: [Inner Loop and Outer Loop Definition URL]
 
 ---
 
