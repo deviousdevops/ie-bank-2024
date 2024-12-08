@@ -131,6 +131,8 @@ CI/CD pipelines safely include secrets kept in Azure Key Vault:
 
 ## Implemented Security Guides
 
+- **Implemented Security Guides**: [Implemented Security Guides URL]
+
 Overview
 
 This section details the security guides and practices implemented to ensure a robust and secure environment for IE BANK’s development processes. Each guide highlights its purpose, implementation, and the specific files or settings where it has been applied.
@@ -143,55 +145,92 @@ Purpose:
 Detect and prevent sensitive information, such as API keys and passwords, from being committed to the repository.
 
 Implementation:
-Enabled Secret Scanning in the GitHub repository. Actively monitors all branches for exposed secrets and sends alerts when sensitive data is detected.
-File/Setting Link:
-Secret Scanning Configuration
+Enabled Secret Scanning in the GitHub repository. It Actively monitors all branches for exposed secrets and sends alerts when sensitive data is detected.
 
-2. Dependency Updates
+Link: https://github.com/deviousdevops/ie-bank-2024/settings/security_analysis
+
+2- Dependency Updates:
+
 Purpose:
 Keep dependencies secure by regularly updating libraries and packages to the latest versions.
 
 Implementation:
+Configured Dependabot to automatically check for and notify about dependency vulnerabilities. Also I enabled automated pull requests for resolving vulnerabilities.
 
-Configured Dependabot to automatically check for and notify about dependency vulnerabilities.
-Enabled automated pull requests for resolving vulnerabilities.
-File/Setting Links:
+Links: - https://github.com/deviousdevops/ie-bank-fe-2024/edit/main/.github/depandabot.yml 
 
-Dependabot Configuration
-Example Alert
-3. Code Scanning:
+3- Code Scanning:
+   
 Purpose:
 Identify vulnerabilities in the codebase using automated tools.
-Implementation:
-Set up CodeQL to perform security and quality analysis on every commit and pull request.
-Configured workflows to run scans automatically and provide detailed reports.
-File/Setting Links:
 
-CodeQL Workflow
-Example CodeQL Run
-4. Branch Protection
+Implementation:
+Set up CodeQL to perform security and quality analysis on every commit and pull request. We configured workflows to run scans automatically and provide detailed reports.
+
+Links: https://github.com/deviousdevops/ie-bank-fe-2024/blob/main/.github/workflows/codeql.yml
+
+4- CODEOWNERS:
+
 Purpose:
-Safeguard the main branch by enforcing rules such as mandatory pull request reviews.
+Assign specific team members to review changes to critical areas of the codebase.
 
-Implementation:
+Implementation: We provided a CODEOWNERS file on github. It Assignes ownership for specific folders.
 
-Enabled Branch Protection Rules to ensure secure collaboration and prevent unauthorized changes.
-File/Setting Link:
-Branch Protection Settings
+Links: https://github.com/deviousdevops/ie-bank-fe-2024/blob/main/.github/CODEOWNERS
 
-5. OSSF Scorecard
+5- OSSF Scorecard:
+   
 Purpose:
-Evaluate the repository’s security health using industry-recognized metrics.
+Use measures that are used in the industry to assess the security status of the repository.
 
 Implementation:
-
 Configured the OSSF Scorecard workflow to regularly evaluate repository security and recommend improvements.
-File/Setting Links:
 
-OSSF Scorecard Workflow
-Example OSSF Scorecard Run
+Links: https://github.com/deviousdevops/ie-bank-fe-2024/blob/main/.github/workflows/Scorecard.yml
 
-- **Implemented Security Guides**: [Implemented Security Guides URL]
+6- Role-Based Access Control (RBAC):
+
+Purpose:
+Restrict access to sensitive resources based on roles, ensuring only authorized users or systems can retrieve credentials.
+
+Implementation:
+RBAC policies defined in Azure Key Vault via Bicep templates.
+
+Link:
+https://github.com/deviousdevops/ie-bank-infra-2024/blob/main/main.bicep
+
+7- Environment Variables:
+
+Purpose:
+Securely pass secrets to applications at runtime without hardcoding them in the codebase.
+
+Implementation:
+Configured secrets as environment variables in GitHub Actions workflows.
+
+Link: https://github.com/deviousdevops/ie-bank-fe-2024/settings/environments
+
+8- Depandabot:
+
+Purpose:
+Keep dependencies up-to-date and secure by automatically detecting and fixing vulnerabilities.
+
+Implementation:
+Enabled Dependabot for security updates in the repository.
+
+Link: https://github.com/deviousdevops/ie-bank-fe-2024/blob/main/.github/depandabot.yml
+
+9- Push Protetion:
+
+Purpose:
+Block commits containing sensitive information before they are pushed to the repository.
+
+Implementation:
+Configured under Settings Security & Analysis. It alerts contributors about secrets in their commits and blocks pushes unless explicitly overridden.
+
+Link: https://github.com/deviousdevops/ie-bank-fe-2024/settings/security_analysis
+
+
+
 
 ---
 
