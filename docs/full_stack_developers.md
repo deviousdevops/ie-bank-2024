@@ -487,7 +487,6 @@ The inner loop refers to the development cycle where developers make changes to 
 3. *Commit and Push*: Once satisfied, developers commit their changes and push them to the remote repository.
 
 ### Outer Loop
-
 The outer loop refers to the CI/CD pipeline that takes over once the code is pushed to the remote repository. This loop ensures that the code is built, tested, and deployed in an automated and consistent manner across different environments.
 
 1. *Trigger Events*: The workflow is triggered by push events, pull requests to the main branch, or manual dispatches.
@@ -497,6 +496,20 @@ The outer loop refers to the CI/CD pipeline that takes over once the code is pus
 5. *Deploy to UAT*: The build artifacts are downloaded, and the application is deployed to the UAT environment.
 6. *Run Postman Tests*: Postman tests are run on the UAT environment to verify the deployment.
 7. *Deploy to Production*: The build artifacts are downloaded, and the application is deployed to the Production environment.
+
+### Outer Loop
+The outer loop automates the CI/CD pipeline for building, testing, and deploying the frontend to Azure Static Web Apps across environments.
+
+1. **Trigger Events**: Triggered by push, pull requests to main, or manual dispatch (workflow_dispatch).
+2. **Build Jobs**:
+   - Check out code, set up Node.js, install dependencies, build with .env files, and upload artifacts (dist-dev, dist-uat, dist-prod).
+3. **Deploy to Development**:
+   - Download artifact (node-app-dev), fetch deployment token from Development Key Vault, and deploy to Azure Static Web App.
+4. **Deploy to UAT**:
+   - After build-uat and deploy-dev, download artifact (node-app-uat), fetch UAT token, and deploy.
+5. **Deploy to Production**:
+   - After build-prod and deploy-uat, download artifact (node-app-prod), fetch Production token, and deploy.
+6. **Output URLs**: Log Static Web App URLs for each environment.
 
 ---
 
