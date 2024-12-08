@@ -81,9 +81,9 @@ The infrastructure for the IE Bank MVP has been carefully designed to ensure sca
   - A lightweight and cost-effective service to host the Vue.js frontend.
   - Provides automatic CI/CD integration via GitHub Actions
   - Enables global scalability and quick deployment.
-2. **Backend Hosting**: **Azure App Service for Containers**
-  - Hosts the Python backend as a containarized service. 
-  - Proivides seamless scalling, reliabilit, and integration with Azure monitoring tools.
+2. **Backend Hosting**: **Azure App Service**
+  - Hosts A Flask Python application as a containarized service. 
+  - Proivides seamless scalling, reliability, and integration with Azure monitoring tools.
 3. **Database: Azure Database for PostreSQL**
   - A managed relational database service chosen for secure and scalable data storage.
   - Utilizes Flexible Server mode for optimal cost and performance.
@@ -93,10 +93,9 @@ The infrastructure for the IE Bank MVP has been carefully designed to ensure sca
 5. **Secrets Management: Azure Key Vault**
   - Ensures secure storage of secrets like PostgreSQL credentials and ACR authentication keys.
   - Integrated with the backend and deployment pipelines for automated secret retrieval.
-6. **Monitoring and Logging: Azure Monitor and Log Analytics Workspace**
-  - Centralized log collection and metric analysis for infrastructure and application layers.
-  - Azure Application Insights:
-  - Provides in-depth performance monitoring and telemetry for the frontend and backend.
+6. **Monitoring and Logging: Azure Alerts, Application Insights and Log Analytics Workspace**
+  - Log collection and metric analysis for infrastructure and application layers on Azure Workbooks.
+  - Azure Application Insights: Provides in-depth performance monitoring and telemetry for the frontend and backend. //ASK EDU
 
 ### Environment Setup: DTAP Approach
 We have implemented a **DTAP** (Development, Testing, Acceptance, Production) environment strategy to ensure isolated and controlled stages for the application lifecycle.
@@ -147,7 +146,7 @@ Each environment is deployed within its respective Azure Resource Group, with co
   - **Azure App Service**: Runs the containerized backend with frequent updates.
   - **Azure Database for PostgreSQL**: Basic configuration for cost-effectiveness.
   - **Azure Key Vault**: Stores secrets (e.g., database credentials).
-  - **Azure Monitor**: Tracks performance metrics and logs during development.
+  - **Azure App Insights and Log Analytics**: Tracks performance metrics and logs during development.
 - **Deployment**:
   - Triggered by GitHub feature branch commits using CI pipelines.
   - Frequent deployments ensure real-time validation of new code.
@@ -162,10 +161,9 @@ Each environment is deployed within its respective Azure Resource Group, with co
   - **Azure App Service**: Deploys a stable backend container for testing.
   - **Azure Database for PostgreSQL**: Uses a configuration that mirrors production settings.
   - **Azure Key Vault**: Securely stores credentials for the UAT setup.
-  - **Azure Monitor**: Captures logs and metrics for test validation.
-  - **Application Insights**: Collects telemetry for backend/frontend performance testing.
+  - **Azure App Insights and Log Analytics**: Captures logs and metrics for test validation. Collects telemetry for backend/frontend performance testing.
 - **Deployment**:
-  - Triggered by Pull Requests to the main branch.
+  - Triggered by Pull Requests to the main branch.  
   - Tests are executed as GitHub status checks, and only passing tests allow a merge.
 
 ---
@@ -178,8 +176,7 @@ Each environment is deployed within its respective Azure Resource Group, with co
   - **Azure App Service**: Scaled container backend for reliability under high loads.
   - **Azure Database for PostgreSQL**: High-availability configuration with backups.
   - **Azure Key Vault**: Enforces stringent access policies for secrets management.
-  - **Azure Monitor and Log Analytics Workspace**: Provides centralized logging and alerting.
-  - **Application Insights**: Monitors application health, latency, and errors in real time.
+  - **Azure App Insights and Log Analytics Workspace**: Provides centralized logging and alerting. Monitors application health, latency, and errors in real time.
 - **Deployment**:
   - Triggered by merging successfully tested code from UAT.
   - Deployment follows automated CI/CD workflows with rollback capabilities.
@@ -192,11 +189,11 @@ Environment-specific configurations are managed through Azure Bicep parameter fi
 
 | **Service**         | **Development**          | **UAT**                         | **Production**                     |
 |----------------------|--------------------------|----------------------------------|-------------------------------------|
-| **App Service Plan** | Basic Tier               | Standard Tier                   | Premium Tier                       |
-| **PostgreSQL DB**    | Single Zone             | Zone-Redundant                  | Zone-Redundant with Backups        |
-| **Key Vault Policies** | Developer Access        | Limited Stakeholder Access       | Restricted Production Access       |
-| **Scaling Rules**    | Manual Scaling          | Auto-Scaling with Alerts        | Auto-Scaling with Redundancy       |
-| **Monitoring**       | Minimal Logs            | Logs + Metrics                  | Full Monitoring + Alerts           |
+| **App Service Plan** | Basic Tier               | Basic Tier                        | Basic Tier                     |
+| **PostgreSQL DB**    | Single Zone              | Single Zone with Backups        | Single Zone with Backups        |
+| **Key Vault Policies** | Developer Access      | Limited Stakeholder Access       | Restricted Production Access       |
+| **Scaling Rules**    | Manual Scaling          | Auto-Scaling with Alerts           | Auto-Scaling with Redundancy       |
+| **Monitoring**       | Full Monitoring + Alerts  | Full Monitoring + Alerts               | Full Monitoring + Alerts           |
 
 ---
 
@@ -265,10 +262,8 @@ Security ensures the protection of sensitive data, such as user credentials and 
 - **GitHub Advanced Security**:
   - CodeQL scans for vulnerabilities in backend (Python) and frontend (Vue.js).
   - Dependabot keeps dependencies up-to-date, reducing exposure to known vulnerabilities.
-- **Azure Networking**:
-  - Restricts inbound traffic using Application Gateway and Network Security Groups (NSGs).
 - **Encryption**:
-  - Data at rest is encrypted with Azure-managed keys in PostgreSQL.
+  - Sensitive data is hashed appropriatley in the frontend and the backend, and never stored in plain text.
   - Data in transit uses HTTPS and TLS for frontend-backend communication.
 
 ### 3. Cost Optimization
@@ -278,12 +273,12 @@ Cost optimization ensures efficient use of Azure resources while maintaining per
 **Design Features:**
 - **Resource Scaling**:
   - Development and UAT environments use lower-cost service tiers.
-  - Production leverages autoscaling to adjust resource usage based on traffic demands.
+  - Production leverages autoscaling to adjust resource usage based on traffic demands. <!-- we need to configure this  -->
+
 - **Static Web Hosting**:
   - Vue.js frontend is hosted on Azure Static Web Apps, minimizing hosting costs.
 - **Efficient Resource Utilization**:
   - Consolidated logging and monitoring using a single Log Analytics Workspace.
-  - Scheduled database scaling during non-peak hours for Development and UAT.
 
 ### 4. Performance Efficiency
 
@@ -311,7 +306,7 @@ Operational excellence ensures smooth application deployment and maintenance, mi
 - **Infrastructure as Code (IaC)**:
   - Bicep templates modularize and automate resource provisioning.
 - **Monitoring and Incident Response**:
-  - Azure Monitor and Application Insights provide real-time visibility.
+  - Application Insights provide real-time visibility.
   - Alerts integrated with Slack via ChatOps for rapid incident response.
 
 ### Design Tradeoffs
@@ -383,7 +378,7 @@ The **DevOps Checklist** from the Azure Architecture Center has been reviewed an
 **Testing**
 - **Unit tests**: `pytest` for backend, Postman for APIs in CI workflows.
 - **Automated functional tests**: Required for UAT deployments as status checks.
-- **Deployment strategies**: Canary or blue-green strategies for critical Production updates.
+- **Deployment strategies**: Canary or blue-green strategies for critical Production updates. //FIX LATER
 
 **Infrastructure as Code (IaC)**
 - Infrastructure modularized using Azure Bicep.
@@ -546,7 +541,6 @@ The 12-Factor App methodology provides a set of best practices for building mode
 **Maximize robustness with fast startup and graceful shutdown.**  
 **Implementation**:
 - Containers ensure consistent and fast startups.
-- Graceful termination signals (e.g., SIGTERM) are handled to ensure clean resource release.
 
 ---
 
@@ -562,7 +556,7 @@ The 12-Factor App methodology provides a set of best practices for building mode
 **Treat logs as event streams.**  
 **Implementation**:
 - Application and infrastructure logs are centralized in Log Analytics Workspace.
-- Application Insights captures performance and error telemetry for both frontend and backend.
+- Application Insights captures performance and error telemetry for both frontend and backend. // fix everwhere that syas azure mionitor
 
 ---
 
