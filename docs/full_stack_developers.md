@@ -75,6 +75,53 @@ This section covers the Git feature branch strategy, describing how the team man
 
 - **Git Feature Branch Strategy**: [Git Feature Branch Strategy URL]
 
+### Branch Protection
+
+This strategy ensures the integrity, security, and quality of the codebase while facilitating collaboration. Below are the enabled protections and their purposes.
+
+### Enabled Settings
+
+### 1. Restrict Deletions
+- **Description**: Only users with bypass permissions can delete the branch.
+- **Purpose**: Prevents accidental or unauthorized deletion of critical branches.
+
+### 2. Require Linear History
+- **Description**: Disallows merge commits, enforcing a linear Git history.
+- **Purpose**: Maintains a clean and readable commit history.
+
+### 3. Require Merge Queue
+- **Description**: Merges are processed sequentially through a queue.
+- **Purpose**: Prevents conflicting changes and ensures orderly integration.
+
+### 4. Require Signed Commits
+- **Description**: All commits must have verified signatures.
+- **Purpose**: Verifies the authenticity of commits to enhance security.
+
+### 5. Require a Pull Request Before Merging
+- **Description**: All changes must be submitted as pull requests.
+- **Purpose**: Ensures every change is reviewed for quality and accuracy.
+
+#### Pull Request Sub-settings:
+- **Request Pull Request Review from Copilot**: Automatically requests reviews from Copilot when applicable.
+
+### 6. Allowed Merge Methods
+- **Description**: Supports Merge Commit, Squash, and Rebase methods.
+- **Purpose**: Provides flexibility for integrating changes effectively.
+
+### 7. Block Force Pushes
+- **Description**: Prevents force pushes to the branch.
+- **Purpose**: Protects branch history from being overwritten or altered.
+
+---
+
+### Benefits
+- **Security**: Verified commits and blocked force pushes protect against unauthorized changes.
+- **Code Quality**: Mandatory pull requests ensure peer review.
+- **History Clarity**: Linear history and merge flexibility maintain a clean commit log.
+
+This strategy safeguards the codebase while supporting team productivity and collaboration.
+
+
 ---
 
 ## Continuous Integration (CI) Workflow for Frontend
