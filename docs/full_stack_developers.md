@@ -149,10 +149,11 @@ This section details the CI workflow for the frontend, highlighting the build st
 Each environment has a separate build job that:
 - *Runs on*: ubuntu-latest
 - *Steps*:
-  1. Checks out the code
-  2. Sets up the required Node.js environment
-  3. Installs dependencies and builds the application using environment-specific .env files
-  4. Uploads the build artifacts for use in the corresponding deployment job
+  1. **Checks out the code**: Retrieves the latest code from the repository to ensure the workflow operates on the most up-to-date version of the application.
+  2. **Sets up the required Node.js environment**: Configures the Node.js runtime environment to match the application's requirements, including version and caching for dependencies.
+  3. **Installs dependencies and builds the application using environment-specific .env files**: Downloads all required libraries and packages, and compiles the frontend application with environment-specific configurations (e.g., Development, UAT, or Production).
+  4. **Uploads the build artifacts for use in the corresponding deployment job**: Saves the compiled application files (e.g., dist-dev, dist-uat, dist-prod) as artifacts to be used in the subsequent deployment step for each environment.
+
 
 ---
 
