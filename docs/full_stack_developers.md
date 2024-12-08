@@ -147,7 +147,7 @@ This section explains the CD workflow for the frontend, detailing the deployment
 
 ## Continuous Delivery (CD) Workflow for Backend
 
-The CD workflow for the backend describes the deployment pipeline and its steps for delivering backend updates continuously.
+The CD workflow for the backend describes the deployment pipeline and its steps for delivering backend updates continuously. After the build job is done, it the workflow deploys to the development, user acceptance testing, and production environments simultaneously.
 
 - **CD Workflow for Backend**: [CD Workflow for Backend URL]
 
