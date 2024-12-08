@@ -67,6 +67,8 @@ Welcome to the Cybersecurity Engineer's section of the IE BANK documentation. Be
 
 ## GitHub Hardening Strategy
 
+- **GitHub Hardening Strategy**: [GitHub Hardening Strategy URL]
+
 Overview
 
 The GitHub Hardening Strategy focusses on securing the repository environment, protecting sensitive data, and promoting secure development methods. We make sure the repository follows best practices while lowering the risks of vulnerabilities and data breaches by using GitHub's built-in tools and procedures.
@@ -94,7 +96,6 @@ A CODEOWNERS file was implemented in order to designate reviewers for particular
 It makes sure that before merging, important regions are examined by necessary team members. This guarantees excellent code reviews and establishes open responsibility.
 
 
-- **GitHub Hardening Strategy**: [GitHub Hardening Strategy URL]
 
 ---
 
