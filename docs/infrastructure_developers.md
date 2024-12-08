@@ -102,9 +102,9 @@ Provides relational database management for the backend API.
 
 | **Environment** | **Key Vault Name**    |
 |------------------|-----------------------|
-| Development     | `devious-kv20-dev`    |
-| UAT             | `devious-kv20-uat`    |
-| Production      | `devious-kv20-prod`   |
+| Development     | `devious-kv29-dev`    |
+| UAT             | `devious-kv29-uat`    |
+| Production      | `devious-kv29-prod`   |
 
 **Purpose**:  
 Secures sensitive information like database credentials, API secrets, and encryption keys.
