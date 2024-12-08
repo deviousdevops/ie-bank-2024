@@ -453,7 +453,7 @@ This will execute all the test functions in the test_routes.pyfile and provide a
 
 The release strategy outlines the process, tools, and techniques used to release updates for both the frontend and backend of IE Bank.
 
-- **Release Strategy**: [Release Strategy URL]
+- **Release Strategy**: [[Release Strategy URL](https://deviousdevops.github.io/ie-bank-2024/cloud_architect.html#release-strategy)]
 
 ---
 
