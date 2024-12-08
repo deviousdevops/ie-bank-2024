@@ -67,7 +67,7 @@ Welcome to the Site Reliability Engineer's section of the IE BANK documentation.
 - [Capacity Design](#capacity-design)
 - [Performance Efficiency](#performance-efficiency-design)
 - [Cost Opimisation and FinOps](#cost-opimisation-design)
-- [Operational Excellence and Release Engineering](#operation-excellence-&-release-engineering-design)
+- [Operational Excellence and Release Engineering](#operational-excellence-&-release-engineering-design)
 - [Site Reliability Engineering Design](#reliability-design)
 
 ---
@@ -577,7 +577,7 @@ Performance Optimization Lifecycle:
 
 * * * * *
 
-## Cost Optimization Design 
+## Cost Optimisation Design 
 -----------------------------
 
 Cost Model & Financial Responsibility:
