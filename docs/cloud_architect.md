@@ -378,7 +378,6 @@ The **DevOps Checklist** from the Azure Architecture Center has been reviewed an
 **Testing**
 - **Unit tests**: `pytest` for backend, Postman for APIs in CI workflows.
 - **Automated functional tests**: Required for UAT deployments as status checks.
-- **Deployment strategies**: Canary or blue-green strategies for critical Production updates. //FIX LATER
 
 **Infrastructure as Code (IaC)**
 - Infrastructure modularized using Azure Bicep.
