@@ -449,16 +449,16 @@ Overview: The capacity design ensures that the IE Bank application can handle cu
 
 Initial Cost Estimation & Resources: All costs were determined from the Azure website, using US location as Central Spain wouldn't always show prices.
 
--   Compute Resources (App Service Plan - B1 Tier):\
+Compute Resources (App Service Plan - B1 Tier):\
     Cost per instance: ~$13/month\
     Initial capacity: 1 instance\
     Projected scaling (if increased demand for our bank): Up to 3 instances based on load.
 
--   Database Resources (PostgreSQL Flexible Server Standard_B1ms):\
+Database Resources (PostgreSQL Flexible Server Standard_B1ms):\
     Base cost: ~$14/month\
     Backup storage: Included for 7 days
 
--   Supporting Services:
+Supporting Services:
 
 -   Application Insights: 5GB/month ingestion, 90-day prod retention, 30-day non-prod retention
 
@@ -468,7 +468,7 @@ Initial Cost Estimation & Resources: All costs were determined from the Azure we
 
 Resource Optimization Strategies:
 
--   Code Performance Optimization: 
+Code Performance Optimization: 
 
 -   General Optimizations: Reduce DB hits with in-memory caching (e.g., Azure Redis), optimize hot paths (login/transaction), async/await for I/O-bound ops. These optimisations would have to be discussed with engineers.
 
@@ -639,7 +639,7 @@ Development Standards:
 
 Release Engineering:
 
--   Environment Strategy:
+Environment Strategy:
 
 -   Dev: Individual dev instances, shared CI.
 
@@ -647,7 +647,7 @@ Release Engineering:
 
 -   Prod: Blue-green deployment, rollback procedures, production monitoring.
 
--   Deployment Pipeline (CI/CD):
+  Deployment Pipeline (CI/CD):
 
 -   Build: Compile code, bundle assets, create container images, validate IaC.
 
