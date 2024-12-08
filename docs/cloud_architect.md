@@ -451,7 +451,8 @@ This section includes the diagrams for each use case and sequential models to il
 
 The Entity Relationship Diagram (ERD) describes the database schema and how the entities in the database are related to each other.
 
-- **Entity Relationship Diagram**: [Entity Relationship Diagram URL]
+- **Entity Relationship Diagram**: 
+![This is the ER diagram](docs/images/ERdiagram.png)
 
 ---
 
@@ -460,7 +461,7 @@ The Entity Relationship Diagram (ERD) describes the database schema and how the 
 The Data Flow Diagram (DFD) visualizes how data moves through the system, showing inputs, outputs, data processes, and storage points.
 
 - **Data Flow Diagram**:
-![Alt Text](images/dfd.png)
+![This is the DFD](images/dfd.png)
 
 ---
 
