@@ -65,10 +65,10 @@ Welcome to the Site Reliability Engineer's section of the IE BANK documentation.
 - [Monitoring Strategy](#monitoring-strategy)
 - [Incident Response Design](#incident-response-design)
 - [Capacity Design](#capacity-design)
-- [Performance Efficiency](#performance-efficiency)
-- [Cost Opimisation and FinOps](#cost-opimisation-finops)
-- [Operational Excellence and Release Engineering](#operation-excellence)
-- [Site Reliability Engineering Design](#site-reliability-engineering-design)
+- [Performance Efficiency](#performance-efficiency-design)
+- [Cost Opimisation and FinOps](#cost-opimisation-design)
+- [Operational Excellence and Release Engineering](#operation-excellence-&-release-engineering-design)
+- [Site Reliability Engineering Design](#reliability-design)
 
 ---
 
@@ -442,7 +442,7 @@ As same as the SLA, this incident response plan will be reviewed quarterly. 
 
 ---
 
-5\. Capacity Design 
+## Capacity Design 
 --------------------
 
 Overview: The capacity design ensures that the IE Bank application can handle current and projected workloads efficiently, meet performance targets, and remain cost-effective. This includes analyzing compute, database, and supporting services, defining scaling policies, and applying cost controls.
@@ -514,7 +514,7 @@ Capacity Model Maintenance:
 
 * * * * *
 
-6\. Performance Efficiency Design 
+## Performance Efficiency Design 
 ----------------------------------
 
 Performance Targets & Requirements:
@@ -577,7 +577,7 @@ Performance Optimization Lifecycle:
 
 * * * * *
 
-7\. Cost Optimization Design 
+## Cost Optimization Design 
 -----------------------------
 
 Cost Model & Financial Responsibility:
@@ -616,7 +616,7 @@ Continuous Improvement (CI):
 
 * * * * *
 
-8\. Operational Excellence & Release Engineering Design 
+## Operational Excellence & Release Engineering Design 
 --------------------------------------------------------
 
 DevOps Culture & Team Structure:
@@ -691,7 +691,7 @@ Continuous Improvement:
 
 * * * * *
 
-9\. Reliability Design 
+## Reliability Design 
 -----------------------
 
 Business Requirements & Reliability Targets:
