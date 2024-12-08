@@ -127,6 +127,124 @@ The Test/Behavior Driven Development (TDD/BDD) strategy defines how the team des
 
 - **TDD/BDD Strategy**: [TDD/BDD Strategy URL]
 
+## Unit Test Documentation
+
+This document provides an overview of the unit tests for the IE Bank backend project. The tests are written using 
+
+pytest
+
+ and cover various aspects of the application's models, including user creation, account creation, and transactions.
+
+### Test Files
+- 
+
+test_model.py
+
+: Contains tests for the models in the application.
+
+### Test Functions
+
+#### 
+
+test_create_multiple_accounts(init_database, sample_user)
+
+
+- **Description**: Tests creating multiple accounts for a single user.
+- **Steps**:
+  1. Retrieve the test user.
+  2. Create two accounts for the user.
+  3. Commit the accounts to the database.
+  4. Retrieve the accounts and verify their details.
+  5. Assert that the user has two accounts.
+
+#### 
+
+test_account_balance_default(init_database, sample_user)
+
+
+- **Description**: Tests the default balance of an account.
+- **Steps**:
+  1. Retrieve the test user.
+  2. Create an account without specifying a balance.
+  3. Commit the account to the database.
+  4. Retrieve the account and assert that the balance is `0.0`.
+
+#### 
+
+test_account_creation_date(init_database, sample_user)
+
+
+- **Description**: Tests the creation date of an account.
+- **Steps**:
+  1. Retrieve the test user.
+  2. Create an account.
+  3. Commit the account to the database.
+  4. Retrieve the account and assert that the creation date is set and is a 
+
+datetime
+
+ object.
+
+#### 
+
+test_create_transaction(init_database, sample_user)
+
+
+- **Description**: Tests creating a transaction.
+- **Steps**:
+  1. Retrieve the test user.
+  2. Create two accounts for the transaction.
+  3. Commit the accounts to the database.
+  4. Create a transaction between the two accounts.
+  5. Commit the transaction to the database.
+  6. Retrieve the transaction and verify its details.
+
+#### 
+
+test_create_user(init_database)
+
+
+- **Description**: Tests creating a user.
+- **Steps**:
+  1. Create a user with specified details.
+  2. Commit the user to the database.
+  3. Retrieve the user and verify its details.
+
+#### 
+
+test_user_unique_constraints(init_database)
+
+
+- **Description**: Tests that username and email must be unique.
+- **Steps**:
+  1. Create and commit the first user.
+  2. Attempt to create another user with the same username and email.
+  3. Assert that an 
+
+IntegrityError
+
+ is raised due to the unique constraints.
+
+### Fixtures
+- 
+
+init_database
+
+: A fixture that initializes the database for testing.
+- 
+
+sample_user
+
+: A fixture that provides a sample user for testing.
+
+```
+
+This will execute all the test functions in the 
+
+test_model.py
+
+ file and provide a summary of the test results.
+
 ---
 
 ## Release Strategy
