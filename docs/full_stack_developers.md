@@ -129,18 +129,10 @@ The Test/Behavior Driven Development (TDD/BDD) strategy defines how the team des
 
 ## Unit Test Documentation
 
-This document provides an overview of the unit tests for the IE Bank backend project. The tests are written using 
-
-pytest
-
- and cover various aspects of the application's models, including user creation, account creation, and transactions.
+This document provides an overview of the unit tests for the IE Bank backend project. The tests are written using pytest and cover various aspects of the application's models, including user creation, account creation, and transactions.
 
 ### Test Files
-- 
-
-test_model.py
-
-: Contains tests for the models in the application.
+- test_model.py: Contains tests for the models in the application.
 
 ### Test Functions
 
@@ -179,11 +171,7 @@ test_account_creation_date(init_database, sample_user)
   1. Retrieve the test user.
   2. Create an account.
   3. Commit the account to the database.
-  4. Retrieve the account and assert that the creation date is set and is a 
-
-datetime
-
- object.
+  4. Retrieve the account and assert that the creation date is set and is a datetime object.
 
 #### 
 
@@ -219,31 +207,11 @@ test_user_unique_constraints(init_database)
 - **Steps**:
   1. Create and commit the first user.
   2. Attempt to create another user with the same username and email.
-  3. Assert that an 
-
-IntegrityError
-
- is raised due to the unique constraints.
+  3. Assert that an IntegrityError is raised due to the unique constraints.
 
 ### Fixtures
-- 
-
-init_database
-
-: A fixture that initializes the database for testing.
-- 
-
-sample_user
-
-: A fixture that provides a sample user for testing.
-
-```
-
-This will execute all the test functions in the 
-
-test_model.py
-
- file and provide a summary of the test results.
+- init_database: A fixture that initializes the database for testing.
+- sample_user: A fixture that provides a sample user for testing.
 
 ---
 
