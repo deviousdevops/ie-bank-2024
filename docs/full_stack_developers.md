@@ -81,7 +81,7 @@ This section covers the Git feature branch strategy, describing how the team man
 
 - **Git Feature Branch Strategy**: [[Git Feature Branch Strategy URL](https://github.com/deviousdevops/ie-bank-fe-2024/settings/rules/2893529)]
 
-### Branch Protection
+### Branch Protection Strategy
 
 This strategy ensures the integrity, security, and quality of the codebase while facilitating collaboration. Below are the enabled protections and their purposes.
 
