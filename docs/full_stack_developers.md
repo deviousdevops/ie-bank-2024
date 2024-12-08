@@ -131,9 +131,10 @@ This strategy safeguards the codebase while supporting team productivity and col
 ---
 
 ## Continuous Integration (CI) Workflow for Frontend
+This section details the CI workflow for the frontend, highlighting the build steps that ensure the frontend code is continuously tested and integrated.
 
-This CI/CD workflow automates the process of building, testing, and deploying a Vue.js frontend application to Azure Static Web Apps for three environments: Development, UAT, and Production.
-
+- **CI Workflow for Frontend**: [CI Workflow for Frontend URL]
+  
 ### Trigger Events
 - push to any branch deploys dev
 - pull_request to the main branch deploys dev, uat and prod
@@ -152,8 +153,6 @@ Each environment has a separate build job that:
   2. Sets up the required Node.js environment
   3. Installs dependencies and builds the application using environment-specific .env files
   4. Uploads the build artifacts for use in the corresponding deployment job
-
-- **CI Workflow for Frontend**: [CI Workflow for Frontend URL]
 
 ---
 
