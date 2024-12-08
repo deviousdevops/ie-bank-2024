@@ -64,6 +64,10 @@ Welcome to the Site Reliability Engineer's section of the IE BANK documentation.
 - [Service Level Indicators (SLI)](#service-level-indicators-sli)
 - [Monitoring Strategy](#monitoring-strategy)
 - [Incident Response Design](#incident-response-design)
+- [Capacity Design](#capacity-design)
+- [Performance Efficiency](#performance-efficiency)
+- [Cost Opimisation and FinOps](#cost-opimisation-finops)
+- [Operational Excellence and Release Engineering](#operation-excellence)
 - [Site Reliability Engineering Design](#site-reliability-engineering-design)
 
 ---
