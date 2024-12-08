@@ -324,73 +324,6 @@ Real-Time Alerts:
 
 -   Monitored on the App Service Plan
 
-3.2 Incident Classification
-
-|
-
-Severity
-
- |
-
-Examples
-
- |
-
-Response Time Objective
-
- |
-|
-
-Critical
-
- |
-
-Complete System Outage
-
- |
-
-Respond within 5 minutes
-
- |
-|
-
-High 
-
- |
-
-Database Latency Exceeding SLA limites
-
- |
-
-Respond within 30 minutes
-
- |
-|
-
-Medium
-
- |
-
-Increased error rates in login or transactions
-
- |
-
-Responds within 1 hour
-
- |
-|
-
-Low
-
- |
-
-Minor performance issues 
-
- |
-
-Responds within 2 hours
-
- |
 
 4 Incident Response Steps
 
@@ -500,7 +433,6 @@ Preventive Measures:
 
 As same as the SLA, this incident response plan will be reviewed quarterly. 
 
-By using this plan, devious IE bank ensures an effective response to incidents, minimizing disruptions and adhering to SLA commitments.
 ---
 
 5\. Capacity Design 
