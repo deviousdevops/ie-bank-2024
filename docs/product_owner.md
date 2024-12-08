@@ -118,7 +118,7 @@ The Product Vision Board provides a clear and concise visualization of the produ
 
 
 **Context & Goals:**  
-The Devious devops group is building the IE Bank, a fintech startup aiming to deliver an intuitive and secure online banking platform. The MVP focuses on essential features that allow customers to manage their accounts, view transactions, register as new users, and perform basic financial operations. Simultaneously, the MVP must also accommodate administrative functions such as user management, ensuring that an internal administrator can effectively control and maintain the system. The overarching goal is to provide a stable, secure, and functional product that can be released to production with confidence, serving as the foundation for future enhancements.
+The Devious Devops group is building the IE Bank, a fintech startup aiming to deliver an intuitive and secure online banking platform. The MVP focuses on essential features that allow customers to manage their accounts, view transactions, register as new users, and perform basic financial operations. Simultaneously, the MVP must also accommodate administrative functions such as user management, ensuring that an internal administrator can effectively control and maintain the system. The overarching goal is to provide a stable, secure, and functional product that can be released to production with confidence, serving as the foundation for future enhancements.
 
 In the inital iteration, a user was able to create bank accounts with different details such as Name, Currency, Country and Balance. The functionality was limited to a single user, and there was no authentication or authorization. 
 
@@ -129,7 +129,7 @@ The initial iteration was also only developed by a single person, so lots of the
 **1. Multi-Account Management:**  
 From the initial iteration, the system already supports basic CRUD (Create, Read, Update, Delete) operations for user accounts
 
-In this MVP, this functionality remains intact and is extended with introducing authentication, user registration, login, and account operation capabilities. Each user can have one or more bank accounts, each identified by a unique account number, and a user is also able to transfer funds between their accounts.
+In this MVP, this functionality remains intact and is extended with introducing authentication, user registration, login, and account operation capabilities. Each user can have one or more bank accounts, each identified by a unique account number.
 
 **2. Administrator Portal – User Management (Admin Portal):**  
 The MVP introduces an administrator portal designed for internal bank administrators, to provide a straightforward, secure management interface to maintain user integrity and respond to operational needs.
@@ -146,12 +146,12 @@ The MVP refines the user-facing portal where customers interact with their perso
 
 **1. Basic Authentication & Security (NFR 1):**  
 - **Authentication Simplicity:** Use a basic username/password authentication method.  
-- **Secure Credential Storage:** All user credentials (including the admin’s) must be hashed and stored securely in the database. No advanced authentication methods like biometrics, tokens, or OAuth are required at this stage.  
-- **Data Integrity & Privacy:** Communications between the client and server should occur over secure channels (e.g., HTTPS) to maintain confidentiality and integrity, even though the MVP may not fully focus on advanced encryption techniques.
+- **Secure Credential Storage:** All user credentials (including the admin’s) are hashed and stored securely in the database. No advanced authentication methods like biometrics, tokens, or OAuth were implemented at this stage.  
+- **Data Integrity & Privacy:** Communications between the client and server occur over secure channels (e.g., HTTPS) to maintain confidentiality and integrity, even though the MVP may not fully focus on advanced encryption techniques.
 
 **2. Simple Frontend User Interface (NFR 2):**  
-- **Minimal Aesthetics:** The front-end should be functional and straightforward, focusing on clarity rather than design complexity. While the interface must be usable, there is no requirement for advanced styling, cross-browser responsiveness, or dynamic animations.  
-- **Ease of Use:** The UI should clearly present essential actions (login, registration, account viewing, transaction history) without confusing flows or extraneous elements.
+- **Minimal Aesthetics:** The front-end is functional and straightforward, focusing on clarity rather than design complexity. While the interface is usable, there is no requirement for advanced styling, cross-browser responsiveness, or dynamic animations.  
+- **Ease of Use:** The UI clearly presents essential actions (login, registration, account viewing, transaction history) without confusing flows or extraneous elements.
 
 ### DevOps Practices & Methodologies
 
@@ -166,14 +166,16 @@ The MVP refines the user-facing portal where customers interact with their perso
 
 **Feature Branching CI/CD Strategy:**  
 - **Branching Model:**  
-  - **Protected main branch:** Main is always stable and only updated after code review, successful testing, and deployment checks.  
-  - **Short-living Feature Branches:** Each new feature or bug fix is developed on a dedicated feature branch. Once the feature is complete and tested, it is integrated back into main via a pull request.
+  - **Protected main branch:** Main is always stable and only updated after successful testing, and deployment checks.  
+  - **Short-living Feature Branches and Trunk-based Development:** Each new feature or bug fix is developed on a dedicated feature branch. Once the feature is complete and tested, it is integrated back into main via a pull request.
 - **Automated Deployments:**  
   - **Dev Environment:** Any push to a feature branch triggers a build, test, and deployment sequence to the Development environment. This environment is for internal testing and experimentation.  
   - **UAT Environment:** Pull requests targeting the main branch automatically deploy a preview to the UAT environment. The team and stakeholders review and test the changes in this environment. After successful validation and stakeholder sign-off, the merge is completed.  
   - **Prod Environment:** Merging into the main branch triggers a production deployment. This final step puts the MVP in front of real end-users.
 
 ### DTAP Environment Setup
+
+This part is better documented in the [Cloud Architect Documentation](cloud_architect.md), but for clarity, the following environments are used:
 
 **Development Environment:**  
 - **Azure Resource Group:** The Development environment will reside in a resource group (e.g., BCSAI2024-DEVOPS-STUDENTS-A-DEV or BCSAI2024-DEVOPS-STUDENTS-B-DEV) where the team has contributor permissions. This allows the team to experiment, troubleshoot, and test configurations directly within Azure services.
@@ -208,13 +210,66 @@ In summary, the MVP is the product’s first tangible, deployable state, deliver
 
 ## Objectives and Key Results (OKRs)
 
-The Product Owner defines 5 objectives with at least 5 key results (KRs) for each objective that the team will strive to achieve over the next quarter. These OKRs will guide the team towards impactful results.
+Below is a set of five high-level objectives aligned with a product’s growth and quality improvement, each supported by five measurable key results. These OKRs are designed for a product team working on a banking MVP. They focus on improving user experience, system reliability, delivery speed, administrative efficiency, and user engagement within the next quarter. These objectives and key results describe both the work that is done in the MVP and the work that will be done in the post-MVP iterations.
 
-- **Objective 1**: [OKR 1 Description URL]
-- **Objective 2**: [OKR 2 Description URL]
-- **Objective 3**: [OKR 3 Description URL]
-- **Objective 4**: [OKR 4 Description URL]
-- **Objective 5**: [OKR 5 Description URL]
+---
+
+### Objective 1: Improve the Customer Onboarding Experience  
+**Key Results:**  
+1. Increase the percentage of successful user registrations (without errors) from 85% to 95%.  
+2. Reduce the average time to complete the registration process from 3 minutes to under 2 minutes.  
+3. Achieve at least a 4.0/5.0 average satisfaction score from new users (as measured by a post-onboarding survey).  
+4. Decrease new user onboarding-related bad server responses by 30%.  
+5. Increase security measures to decrease the number of fraudulent registrations by 50%.
+
+---
+
+The objectives here can be better suplemented in the [Site Reliability Engineering Documentation](site_reliability_engineers.md).
+
+### Objective 2: Enhance System Reliability and Performance  
+**Key Results:**  
+1. Maintain a 99.9% uptime of all core functionalities (login, account view, transfers) during business hours.  
+2. Reduce the average page load time on the user portal from 2.5s to under 1.5s.  
+3. Decrease the number of critical error logs in production by 50%.  
+4. Ensure the application can handle a load of 1,000 concurrent users with an average response time under 2 seconds.  
+5. Achieve 100% completion of performance testing scenarios covering peak load, stress, and endurance testing.
+
+---
+
+### Objective 3: Accelerate Feature Delivery and Deployment Pipeline  
+**Key Results:**  
+1. Increase release frequency to the Production environment from once per month to once per week.  
+2. Reduce the average build time in CI from 10 minutes to under 5 minutes.  
+3. Achieve at least 90% automated test coverage of critical features.  
+4. Decrease the lead time from code commit to production deployment from 24 hours to under 2 hours.  
+5. Reduce the rollback rate of production deployments due to defects from 10% to under 3%.
+
+---
+
+### Objective 4: Improve Admin Portal Efficiency & Effectiveness  
+**Key Results:**  
+1. Decrease the average time for an admin to create/update a user profile from 5 minutes to under 2 minutes.  
+2. Achieve a 4.5/5.0 internal satisfaction rating from admins using the portal (measured via internal feedback survey).  
+3. Reduce admin escalations to the development team by 50% (indicating admins can resolve most user issues independently).  
+4. Achieve a 95% first-contact resolution rate for user account management issues handled by admins.  
+5. Provide comprehensive admin portal training, ensuring 100% of admins complete onboarding materials and pass a basic competency quiz.
+
+---
+
+### Objective 5: Increase End-User Engagement & Transaction Volume  
+**Key Results:**  
+1. Increase the number of monthly active users (MAU) by 20% compared to the previous quarter.  
+2. Increase the average number of successful transactions per active user per month by 15%.  
+3. Decrease monthly user churn (account closures) from 5% to under 3%.  
+4. Achieve a 70% adoption rate for the internal money transfer feature among active users.  
+5. Attain a Net Promoter Score (NPS) of at least 40, indicating improved user satisfaction and likelihood to recommend the service.
+
+---
+
+**How to Use These OKRs:**  
+- **Regular Review:** Assess progress against these key results every two weeks. Adjust strategies if metrics are not trending in the right direction.  
+- **Cross-Functional Collaboration:** Involve product owners, developers, designers, QA, DevOps, and support teams to ensure that everyone’s efforts are aligned with achieving these OKRs.  
+- **Incremental Improvement:** If targets seem consistently easy or hard to meet, calibrate accordingly in the next cycle.
 
 ---
 
