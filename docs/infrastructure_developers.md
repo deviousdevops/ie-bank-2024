@@ -189,6 +189,44 @@ The **Infrastructure Release Strategy** leverages **Azure Bicep** templates and 
 
 ### **Release Workflow**
 
+
+Below is the **simplified infrastructure diagram** with arrows showing resource relationships:
+
+```plaintext
+          +---------------------------+
+          |   Azure Static Web Apps   | <-- Node.js Frontend
+          +---------------------------+
+                          |
+                          v
+          +---------------------------+
+          |     Azure App Service     | <-- Python Backend (FastAPI)
+          +---------------------------+
+                          |
+                          v
+          +---------------------------+        +--------------------+
+          |   Azure Container Registry| <----> |   Docker Images    |
+          +---------------------------+        +--------------------+
+                          |
+                          v
+          +---------------------------+
+          |  Azure Database (PostgreSQL)| <-- Managed Identity (Secure Access)
+          +---------------------------+
+                          ^
+                          |
+          +---------------------------+
+          |       Azure Key Vault      | <-- Secrets Management
+          +---------------------------+
+                          |
+                          v
+          +---------------------------+
+          |  Azure Log Analytics       | <-- Logging & Diagnostics
+          +---------------------------+
+                          |
+                          v
+          +---------------------------+
+          |  Azure Application Insights| <-- Monitoring & Telemetry
+          +---------------------------+
+
 1. **Environment-Specific Configurations**:  
    Each environment is configured using dedicated parameter files:
    - `dev.parameters.json`
