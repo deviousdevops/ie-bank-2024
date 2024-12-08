@@ -114,11 +114,7 @@ This section details the CI workflow for the backend, highlighting the build ste
   1. Checkout the repository.
   2. Set up Python 3.11.
   3. Upgrade pip.
-  4. Install dependencies from 
-
-requirements.txt
-
-.
+  4. Install dependencies from requirements.txt.
   5. Lint the code using flake8.
   6. Run tests using pytest with coverage.
   7. Upload the build artifact for deployment jobs.
