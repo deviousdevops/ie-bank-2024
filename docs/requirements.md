@@ -73,7 +73,7 @@ Welcome to the **Functional and Non-Functional Requirements** page for IE Bank. 
 The IE Bank system will include a **bank user management portal** for administrators. This portal allows admin users to view, create, update, and delete bank users and their credentials.
 
 - **FR 1**: The application must provide a default administrator account (username and password) to access the user management portal upon successful login.  
-  - [Link to relevant user story and acceptance test]  
+  - [https://dev.azure.com/zalsahebieu2022/ie-bank-2024/_workitems/edit/12]  
 
 - **FR 2**: Once logged in, administrators must be able to list, create, update, and delete users and manage their credentials.  
   - [Link to relevant user story and acceptance test]
