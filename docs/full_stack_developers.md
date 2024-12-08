@@ -198,24 +198,18 @@ The Test/Behavior Driven Development (TDD/BDD) strategy defines how the team des
 
 - **TDD/BDD Strategy**: [TDD/BDD Strategy URL]
 
-We started by creating three user stories that represent the main functionality our website needs for the users: 
-- As a new user, I want to register for the application by providing my details so that I can create an account and start using the bank's services.
-- As a bank user, I want the ability to create and manage multiple bank accounts associated with my profile so that I can organize my finances and update account details as needed.
-- As a bank user, I want to transfer money to other accounts by entering the recipient’s account number and the transfer amount so that I can manage payments or send funds. The system should ensure that the transfer amount does not exceed the available balance in my account.
-
 ## Unit Tests
 
 ### Test Files
 - test_model.py: Contains tests for the models in the application.
-
-To achieve these user stories we created the following tests and made sure our application had these functionalities implemented.
 
 ### Test Functions
 
 #### 
 
 #### test_create_multiple_accounts(init_database, sample_user)
-
+- **User Story**:
+  1. As a bank user, I want the ability to create and manage multiple bank accounts associated with my profile so that I can organize my finances and update account details as needed.
 
 - **Description**: Tests creating multiple accounts for a single user.
 - **Steps**:
@@ -228,6 +222,8 @@ To achieve these user stories we created the following tests and made sure our a
 #### 
 
 #### test_account_balance_default(init_database, sample_user)
+- **User Story**:
+  1. As a new user, I want to register for the application by providing my details so that I can create an account and start using the bank's services.
 
 
 - **Description**: Tests the default balance of an account.
@@ -252,7 +248,8 @@ To achieve these user stories we created the following tests and made sure our a
 #### 
 
 #### test_create_transaction(init_database, sample_user)
-
+- **User Story**:
+  1. As a bank user, I want to transfer money to other accounts by entering the recipient’s account number and the transfer amount so that I can manage payments or send funds. The system should ensure that the transfer amount does not exceed the available balance in my account.
 
 - **Description**: Tests creating a transaction.
 - **Steps**:
