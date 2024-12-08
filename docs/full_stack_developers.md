@@ -91,6 +91,38 @@ This section details the CI workflow for the backend, highlighting the build ste
 
 - **CI Workflow for Backend**: [CI Workflow for Backend URL]
 
+### Trigger Events
+- push to any branch
+- pull_request to the main branch
+- workflow_dispatch (manual trigger)
+
+### Permissions
+- contents: read
+- id-token: write
+
+### Environment Variables
+- BACKEND_WEBAPP_DEV: Name of the development web app
+- BACKEND_WEBAPP_UAT: Name of the UAT web app
+- ACR_NAME_DEV: Azure Container Registry name for development
+- ACR_NAME_UAT: Azure Container Registry name for UAT
+- IMAGE_NAME: Docker image name
+
+### Build Job
+- *Runs on*: ubuntu-latest
+- *Environment Variables*: ENV: ghci
+- *Steps*:
+  1. Checkout the repository.
+  2. Set up Python 3.11.
+  3. Upgrade pip.
+  4. Install dependencies from 
+
+requirements.txt
+
+.
+  5. Lint the code using flake8.
+  6. Run tests using pytest with coverage.
+  7. Upload the build artifact for deployment jobs.
+
 ---
 
 ## Test/Behavior Driven Development Strategy
