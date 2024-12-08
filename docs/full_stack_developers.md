@@ -123,13 +123,11 @@ This section details the CI workflow for the backend, highlighting the build ste
 
 ## Test/Behavior Driven Development Strategy
 
-The Test/Behavior Driven Development (TDD/BDD) strategy defines how the team designs tests and selects User Stories to drive development through testing.
+The Test/Behavior Driven Development (TDD/BDD) strategy defines how the team designs tests and selects User Stories to drive development through testing. This section of the document provides an overview of the unit and functional tests for the IE Bank backend project. The tests are written using pytest and cover various aspects of the application's models, including user creation, account creation, and transactions.
 
 - **TDD/BDD Strategy**: [TDD/BDD Strategy URL]
 
-## Unit Test Documentation
-
-This document provides an overview of the unit tests for the IE Bank backend project. The tests are written using pytest and cover various aspects of the application's models, including user creation, account creation, and transactions.
+### Unit Tests
 
 ### Test Files
 - test_model.py: Contains tests for the models in the application.
@@ -212,6 +210,189 @@ test_user_unique_constraints(init_database)
 ### Fixtures
 - init_database: A fixture that initializes the database for testing.
 - sample_user: A fixture that provides a sample user for testing.
+
+### Functional Tests
+
+### Test Files
+- test_routes.py: Contains tests for the routes in the application.
+
+### Test Functions
+
+#### 
+
+test_register(test_client, init_database)
+
+
+- **Description**: Tests the registration of a new user.
+- **Steps**:
+  1. Send a POST request to the `/register` endpoint with user details.
+  2. Assert that the response status code is `200`.
+  3. Verify the response data contains the correct username and email.
+
+#### 
+
+test_login_user(test_client, init_database, sample_user)
+
+
+- **Description**: Tests logging in a user.
+- **Steps**:
+  1. Send a POST request to the `/login` endpoint with user credentials.
+  2. Assert that the response status code is `200`.
+  3. Verify the response data contains a token and user details.
+
+#### 
+
+test_user_portal(test_client, init_database, sample_user)
+
+
+- **Description**: Tests accessing the user portal.
+- **Steps**:
+  1. Log in the user and retrieve the token.
+  2. Create accounts and transactions for the user.
+  3. Send a GET request to the `/user_portal` endpoint with the token.
+  4. Assert that the response status code is `200`.
+  5. Verify the response data contains the correct accounts and transactions.
+
+#### 
+
+test_admin_portal(test_client, init_database, admin_user)
+
+
+- **Description**: Tests accessing the admin portal.
+- **Steps**:
+  1. Log in the admin user and retrieve the token.
+  2. Send a GET request to the `/admin_portal` endpoint with the token.
+  3. Assert that the response status code is `200`.
+  4. Verify the response data contains the list of users.
+
+#### 
+
+test_create_account(test_client, init_database, sample_user)
+
+
+- **Description**: Tests creating a new account.
+- **Steps**:
+  1. Log in the user and retrieve the token.
+  2. Send a POST request to the `/accounts` endpoint with account details and the token.
+  3. Assert that the response status code is `200`.
+  4. Verify the response data contains the correct account details.
+
+#### 
+
+test_get_account(test_client, init_database, sample_user)
+
+
+- **Description**: Tests getting a specific account by ID.
+- **Steps**:
+  1. Log in the user and retrieve the token.
+  2. Create a new account.
+  3. Send a GET request to the `/accounts/{account.id}` endpoint with the token.
+  4. Assert that the response status code is `200`.
+  5. Verify the response data contains the correct account details.
+
+#### 
+
+test_update_account(test_client, init_database, sample_user)
+
+
+- **Description**: Tests updating a specific account by ID.
+- **Steps**:
+  1. Log in the user and retrieve the token.
+  2. Create a new account.
+  3. Send a PUT request to the `/accounts/{account.id}` endpoint with updated account details and the token.
+  4. Assert that the response status code is `200`.
+  5. Verify the response data contains the updated account details.
+
+#### 
+
+test_delete_account(test_client, init_database, sample_user)
+
+
+- **Description**: Tests deleting a specific account by ID.
+- **Steps**:
+  1. Log in the user and retrieve the token.
+  2. Create a new account.
+  3. Send a DELETE request to the `/accounts/{account.id}` endpoint with the token.
+  4. Assert that the response status code is `200`.
+  5. Verify the response data contains the deleted account details.
+
+#### 
+
+test_create_transaction(test_client, init_database, sample_user)
+
+
+- **Description**: Tests creating a new transaction.
+- **Steps**:
+  1. Log in the user and retrieve the token.
+  2. Create two accounts.
+  3. Send a POST request to the `/transactions` endpoint with transaction details and the token.
+  4. Assert that the response status code is `200`.
+  5. Verify the response data contains the correct transaction details.
+
+#### 
+
+test_get_transactions(test_client, init_database, sample_user)
+
+
+- **Description**: Tests getting all transactions for the logged-in user.
+- **Steps**:
+  1. Log in the user and retrieve the token.
+  2. Create accounts and transactions.
+  3. Send a GET request to the `/transactions` endpoint with the token.
+  4. Assert that the response status code is `200`.
+  5. Verify the response data contains the list of transactions.
+
+#### 
+
+test_create_user(test_client, init_database, admin_user)
+
+
+- **Description**: Tests creating a new user by admin.
+- **Steps**:
+  1. Log in the admin user and retrieve the token.
+  2. Send a POST request to the `/admin/users` endpoint with user details and the token.
+  3. Assert that the response status code is `200`.
+  4. Verify the response data contains the correct user details.
+
+#### 
+
+test_update_user(test_client, init_database, admin_user)
+
+
+- **Description**: Tests updating a user by admin.
+- **Steps**:
+  1. Log in the admin user and retrieve the token.
+  2. Create a user to update.
+  3. Send a PUT request to the `/admin/users/{user.id}` endpoint with updated user details and the token.
+  4. Assert that the response status code is `200`.
+  5. Verify the response data contains the updated user details.
+
+#### 
+
+test_delete_user(test_client, init_database, admin_user)
+
+
+- **Description**: Tests deleting a user by admin.
+- **Steps**:
+  1. Log in the admin user and retrieve the token.
+  2. Create a user to delete.
+  3. Send a DELETE request to the `/admin/users/{user.id}` endpoint with the token.
+  4. Assert that the response status code is `200`.
+  5. Verify the response data contains the deleted user details.
+
+### Fixtures
+- test_client: A fixture that provides a test client for making requests to the application.
+- init_database: A fixture that initializes the database for testing.
+- sample_user: A fixture that provides a sample user for testing.
+- admin_user: A fixture that provides an admin user for testing.
+
+### Running the Tests
+To run the tests, use the following command:
+```sh
+pytest
+```
+
+This will execute all the test functions in the test_routes.pyfile and provide a summary of the test results.
 
 ---
 
