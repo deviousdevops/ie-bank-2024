@@ -305,7 +305,7 @@ Tools:
 
 Real-Time Alerts:
 
--   User login latency exceeds 2 seconds
+User login latency exceeds 2 seconds
 
 -   Implemented as Login-Response-Time-Alert
 
@@ -313,7 +313,7 @@ Real-Time Alerts:
 
 -   Monitored through Application Insights
 
--   HTTP error rate spikes
+  HTTP error rate spikes
 
 -   Implemented as HTTP-Error-Rate-Alert
 
@@ -321,11 +321,15 @@ Real-Time Alerts:
 
 -   Monitored on the Web App
 
--   CPU Usage Alert
+  CPU Usage Alert
 
 -   Triggers when CPU usage > 80%
 
 -   Monitored on the App Service Plan
+
+<img width="539" alt="Screenshot 2024-12-08 at 18 25 05" src="https://github.com/user-attachments/assets/993a8c59-4502-493a-b950-ba30b4bc7bc4">
+
+Image demonstrates alerts being handled and sent to Slack channel for intervention
 
 
 4 Incident Response Steps
@@ -468,9 +472,9 @@ Resource Optimization Strategies:
 
 -   General Optimizations: Reduce DB hits with in-memory caching (e.g., Azure Redis), optimize hot paths (login/transaction), async/await for I/O-bound ops. These optimisations would have to be discussed with engineers.
 
--   Infrastructure Optimization:
+  Infrastructure Optimization:
 
--   App Service:
+App Service:
 
 -   Always On in production only to ensure responsiveness in prod, reduce costs in non-prod.
 
@@ -478,7 +482,7 @@ Resource Optimization Strategies:
 
 -   Min Instances: 1, Max: 3, Cool-down: 10 min.
 
--   Database:
+  Database:
 
 -   Connection pooling to maximize efficiency.
 
@@ -488,13 +492,13 @@ Resource Optimization Strategies:
 
 Capacity Monitoring & Alerts:
 
--   Performance Metrics:
+Performance Metrics:
 
 -   Login Response <2s (SLO), alert if >1s for 5 min.
 
 -   Database connections: monitor failed connections, pool exhaustion, slow queries.
 
--   Scaling Thresholds:
+  Scaling Thresholds:
 
 -   App Service: Scale out at CPU>75%/10min, Scale in at CPU<25%/30min, max 3 instances.
 
@@ -529,13 +533,13 @@ Resource-Specific Requirements:
 
 Performance Optimization Strategies:
 
--   Frontend (Vue.js + CDN):
+Frontend (Vue.js + CDN):
 
 -   Azure CDN for static assets, enable compression, caching static resources.
 
 -   Client-side caching, optimize bundle sizes, lazy loading for components.
 
--   Backend (Python APIs):
+  Backend (Python APIs):
 
 -   Response compression, async/await patterns, API response caching.
 
