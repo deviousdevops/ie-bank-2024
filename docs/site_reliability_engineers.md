@@ -172,7 +172,7 @@ Customer: _______________        IE_Bank_CEO:  _______________
 -   Objective 4 - HTTP Requests: 95% of HTTP requests for the IE Bank static website processed in under 5 seconds.
 
 -   Objective 5 - HTTP Error Rate: 99% of HTTP requests for the IE Bank website processed without errors (4xx or 5xx).
----
+
 
 ## Service Level Indicators (SLI)
 
