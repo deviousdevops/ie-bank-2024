@@ -127,7 +127,7 @@ The Test/Behavior Driven Development (TDD/BDD) strategy defines how the team des
 
 - **TDD/BDD Strategy**: [TDD/BDD Strategy URL]
 
-### Unit Tests
+## Unit Tests
 
 ### Test Files
 - test_model.py: Contains tests for the models in the application.
@@ -136,7 +136,7 @@ The Test/Behavior Driven Development (TDD/BDD) strategy defines how the team des
 
 #### 
 
-test_create_multiple_accounts(init_database, sample_user)
+#### test_create_multiple_accounts(init_database, sample_user)
 
 
 - **Description**: Tests creating multiple accounts for a single user.
@@ -149,7 +149,7 @@ test_create_multiple_accounts(init_database, sample_user)
 
 #### 
 
-test_account_balance_default(init_database, sample_user)
+#### test_account_balance_default(init_database, sample_user)
 
 
 - **Description**: Tests the default balance of an account.
@@ -161,7 +161,7 @@ test_account_balance_default(init_database, sample_user)
 
 #### 
 
-test_account_creation_date(init_database, sample_user)
+#### test_account_creation_date(init_database, sample_user)
 
 
 - **Description**: Tests the creation date of an account.
@@ -173,7 +173,7 @@ test_account_creation_date(init_database, sample_user)
 
 #### 
 
-test_create_transaction(init_database, sample_user)
+#### test_create_transaction(init_database, sample_user)
 
 
 - **Description**: Tests creating a transaction.
@@ -187,7 +187,7 @@ test_create_transaction(init_database, sample_user)
 
 #### 
 
-test_create_user(init_database)
+#### test_create_user(init_database)
 
 
 - **Description**: Tests creating a user.
@@ -198,7 +198,7 @@ test_create_user(init_database)
 
 #### 
 
-test_user_unique_constraints(init_database)
+#### test_user_unique_constraints(init_database)
 
 
 - **Description**: Tests that username and email must be unique.
@@ -211,7 +211,7 @@ test_user_unique_constraints(init_database)
 - init_database: A fixture that initializes the database for testing.
 - sample_user: A fixture that provides a sample user for testing.
 
-### Functional Tests
+## Functional Tests
 
 ### Test Files
 - test_routes.py: Contains tests for the routes in the application.
@@ -220,7 +220,7 @@ test_user_unique_constraints(init_database)
 
 #### 
 
-test_register(test_client, init_database)
+#### test_register(test_client, init_database)
 
 
 - **Description**: Tests the registration of a new user.
@@ -231,7 +231,7 @@ test_register(test_client, init_database)
 
 #### 
 
-test_login_user(test_client, init_database, sample_user)
+#### test_login_user(test_client, init_database, sample_user)
 
 
 - **Description**: Tests logging in a user.
@@ -242,7 +242,7 @@ test_login_user(test_client, init_database, sample_user)
 
 #### 
 
-test_user_portal(test_client, init_database, sample_user)
+#### test_user_portal(test_client, init_database, sample_user)
 
 
 - **Description**: Tests accessing the user portal.
@@ -255,7 +255,7 @@ test_user_portal(test_client, init_database, sample_user)
 
 #### 
 
-test_admin_portal(test_client, init_database, admin_user)
+#### test_admin_portal(test_client, init_database, admin_user)
 
 
 - **Description**: Tests accessing the admin portal.
@@ -267,7 +267,7 @@ test_admin_portal(test_client, init_database, admin_user)
 
 #### 
 
-test_create_account(test_client, init_database, sample_user)
+#### test_create_account(test_client, init_database, sample_user)
 
 
 - **Description**: Tests creating a new account.
@@ -279,7 +279,7 @@ test_create_account(test_client, init_database, sample_user)
 
 #### 
 
-test_get_account(test_client, init_database, sample_user)
+#### test_get_account(test_client, init_database, sample_user)
 
 
 - **Description**: Tests getting a specific account by ID.
@@ -292,7 +292,7 @@ test_get_account(test_client, init_database, sample_user)
 
 #### 
 
-test_update_account(test_client, init_database, sample_user)
+#### test_update_account(test_client, init_database, sample_user)
 
 
 - **Description**: Tests updating a specific account by ID.
@@ -318,7 +318,7 @@ test_delete_account(test_client, init_database, sample_user)
 
 #### 
 
-test_create_transaction(test_client, init_database, sample_user)
+#### test_create_transaction(test_client, init_database, sample_user)
 
 
 - **Description**: Tests creating a new transaction.
@@ -331,7 +331,7 @@ test_create_transaction(test_client, init_database, sample_user)
 
 #### 
 
-test_get_transactions(test_client, init_database, sample_user)
+#### test_get_transactions(test_client, init_database, sample_user)
 
 
 - **Description**: Tests getting all transactions for the logged-in user.
@@ -344,7 +344,7 @@ test_get_transactions(test_client, init_database, sample_user)
 
 #### 
 
-test_create_user(test_client, init_database, admin_user)
+#### test_create_user(test_client, init_database, admin_user)
 
 
 - **Description**: Tests creating a new user by admin.
@@ -356,7 +356,7 @@ test_create_user(test_client, init_database, admin_user)
 
 #### 
 
-test_update_user(test_client, init_database, admin_user)
+#### test_update_user(test_client, init_database, admin_user)
 
 
 - **Description**: Tests updating a user by admin.
@@ -369,7 +369,7 @@ test_update_user(test_client, init_database, admin_user)
 
 #### 
 
-test_delete_user(test_client, init_database, admin_user)
+#### test_delete_user(test_client, init_database, admin_user)
 
 
 - **Description**: Tests deleting a user by admin.
