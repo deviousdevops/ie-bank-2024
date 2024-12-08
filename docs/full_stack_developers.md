@@ -73,7 +73,7 @@ Welcome to the Full Stack Developer's section of the IE BANK documentation. Belo
 
 This section covers the Git feature branch strategy, describing how the team manages feature branches and the configuration applied in GitHub to implement this strategy.
 
-- **Git Feature Branch Strategy**: [Git Feature Branch Strategy URL]
+- **Git Feature Branch Strategy**: [[Git Feature Branch Strategy URL](https://github.com/deviousdevops/ie-bank-fe-2024/settings/rules/2893529)]
 
 ### Branch Protection
 
