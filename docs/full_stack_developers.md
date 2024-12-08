@@ -59,6 +59,8 @@ title: "Full Stack Developers Documentation"
 Welcome to the Full Stack Developer's section of the IE BANK documentation. Below you will find the key sections that describe the strategies and workflows involved in the frontend and backend development of IE BANK.
 
 ## Table of Contents
+- [Functional Requirements](#functional-requirements)
+- [Non-Functional Requirements](#non-functional-requirements)
 - [Git Feature Branch Strategy](#git-feature-branch-strategy)
 - [Continuous Integration (CI) Workflow for Frontend](#continuous-integration-ci-workflow-for-frontend)
 - [Continuous Integration (CI) Workflow for Backend](#continuous-integration-ci-workflow-for-backend)
@@ -67,6 +69,26 @@ Welcome to the Full Stack Developer's section of the IE BANK documentation. Belo
 - [Release Strategy](#release-strategy)
 - [Continuous Delivery (CD) Workflow for Frontend](#continuous-delivery-cd-workflow-for-frontend)
 - [Continuous Delivery (CD) Workflow for Backend](#continuous-delivery-cd-workflow-for-backend)
+
+---
+
+## Functional Requirements
+
+This section outlines the functional requirements for the Full Stack Developers of IE BANK. These requirements describe the core functionalities that the system must provide.
+
+- **Requirement 1**: [Functional Requirement 1 URL]
+- **Requirement 2**: [Functional Requirement 2 URL]
+- **Requirement 3**: [Functional Requirement 3 URL]
+
+---
+
+## Non-Functional Requirements
+
+This section outlines the non-functional requirements, specifying the system's performance, scalability, and other technical qualities that do not directly affect specific functionalities but are essential for the system's quality.
+
+- **Non-Functional Requirement 1**: [Non-Functional Requirement 1 URL]
+- **Non-Functional Requirement 2**: [Non-Functional Requirement 2 URL]
+- **Non-Functional Requirement 3**: [Non-Functional Requirement 3 URL]
 
 ---
 
@@ -147,3 +169,4 @@ Feel free to explore each section for detailed documentation.
 <div class="next-section-link">
   <a href="infrastructure_developers.html">Next</a>
 </div>
+

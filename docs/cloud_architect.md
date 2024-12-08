@@ -452,7 +452,7 @@ This section includes the diagrams for each use case and sequential models to il
 The Entity Relationship Diagram (ERD) describes the database schema and how the entities in the database are related to each other.
 
 - **Entity Relationship Diagram**: 
-![This is the ER diagram](docs/images/ERdiagram.png)
+![This is the ER diagram](images/ERdiagram.png)
 
 ---
 
