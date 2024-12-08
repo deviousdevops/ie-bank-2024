@@ -132,7 +132,26 @@ This strategy safeguards the codebase while supporting team productivity and col
 
 ## Continuous Integration (CI) Workflow for Frontend
 
-The CI workflow for the IE Bank frontend outlines the build steps involved in the process, explaining the purpose of each step to ensure that the code is built and tested continuously.
+This CI/CD workflow automates the process of building, testing, and deploying a Vue.js frontend application to Azure Static Web Apps for three environments: Development, UAT, and Production.
+
+### Trigger Events
+- push to any branch deploys dev
+- pull_request to the main branch deploys dev, uat and prod
+- workflow_dispatch (manual trigger)
+  
+### Environment Variables
+- KeyVault_DEV: Name of Azure Key Vault for Development
+- KeyVault_UAT: Name of the Azure Key Vault for UAT
+- KeyVault_PROD: Name of the Azure Key Vault for Production
+
+### Build Job
+Each environment has a separate build job that:
+- *Runs on*: ubuntu-latest
+- *Steps*:
+  1. Checks out the code
+  2. Sets up the required Node.js environment
+  3. Installs dependencies and builds the application using environment-specific .env files
+  4. Uploads the build artifacts for use in the corresponding deployment job
 
 - **CI Workflow for Frontend**: [CI Workflow for Frontend URL]
 
@@ -479,9 +498,44 @@ The outer loop refers to the CI/CD pipeline that takes over once the code is pus
 
 ## Continuous Delivery (CD) Workflow for Frontend
 
-This section explains the CD workflow for the frontend, detailing the deployment steps and their purpose in ensuring continuous delivery.
+The CD workflow for the frontend details the deployment pipeline for delivering updates to the frontend application continuously. After the build jobs are complete, the workflow deploys the application to the development, user acceptance testing (UAT), and production environments.
 
 - **CD Workflow for Frontend**: [CD Workflow for Frontend URL]
+### Deploy to Development Environment
+- *Runs on*: ubuntu-latest
+- *Needs*: build-dev
+- *Environment*: Development
+- *Outputs*: static_webapp_url - The Static Web App URL for the development environment.
+- *Steps*:
+  1. Download Artifact: Downloads the built artifact (node-app-dev) from the build-dev job.
+  2. Log in to Azure: Authenticates using the AZURE_CREDENTIALS GitHub secret.
+  3. Fetch Deployment Token: Retrieves the deployment token for the development environment from the Development Key Vault.
+  4. Deploy to Azure Static Web App: Uploads the application to the development Static Web App.
+  5. Output Web App URL: Outputs the Static Web App URL to the workflow logs for easy reference.
+  
+### Deploy to UAT Environment
+- *Runs on*: ubuntu-latest
+- *Needs*: build-uat, deploy-dev
+- *Environment*: UAT
+- *Outputs*: static_webapp_url - The Static Web App URL for the UAT environment.
+- *Steps*:
+  1. **Download Artifact**: Downloads the built artifact (node-app-uat) from the build-uat job.
+  2. **Log in to Azure**: Authenticates using the AZURE_CREDENTIALS GitHub secret.
+  3. **Fetch Deployment Token**: Retrieves the deployment token for the UAT environment from the UAT Key Vault.
+  4. **Deploy to Azure Static Web App**: Uploads the application to the UAT Static Web App.
+  5. **Output Web App URL**: Outputs the Static Web App URL to the workflow logs for easy reference.
+
+### Deploy to Production Environment
+- *Runs on*: ubuntu-latest
+- *Needs*: build-prod, deploy-uat
+- *Environment*: Production
+- *Outputs*: static_webapp_url - The Static Web App URL for the production environment.
+- *Steps*:
+  1. **Download Artifact**: Downloads the built artifact (node-app-prod) from the build-prod job.
+  2. **Log in to Azure**: Authenticates using the AZURE_CREDENTIALS GitHub secret.
+  3. **Fetch Deployment Token**: Retrieves the deployment token for the production environment from the Production Key Vault.
+  4. **Deploy to Azure Static Web App**: Uploads the application to the production Static Web App.
+  5. **Output Web App URL**: Outputs the Static Web App URL to the workflow logs for easy reference.
 
 ---
 
