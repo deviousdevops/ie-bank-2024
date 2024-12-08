@@ -133,7 +133,7 @@ This strategy safeguards the codebase while supporting team productivity and col
 ## Continuous Integration (CI) Workflow for Frontend
 This section details the CI workflow for the frontend, highlighting the build steps that ensure the frontend code is continuously tested and integrated.
 
-- **CI Workflow for Frontend**: [CI Workflow for Frontend URL]
+- **CI Workflow for Frontend**: [[CI Workflow for Frontend URL](https://github.com/deviousdevops/ie-bank-fe-2024/blob/main/.github/workflows/ie-bank-frontend.yml)]
   
 ### Trigger Events
 - push to any branch deploys dev
@@ -499,7 +499,7 @@ The outer loop refers to the CI/CD pipeline that takes over once the code is pus
 
 The CD workflow for the frontend details the deployment pipeline for delivering updates to the frontend application continuously. After the build jobs are complete, the workflow deploys the application to the development, user acceptance testing (UAT), and production environments.
 
-- **CD Workflow for Frontend**: [CD Workflow for Frontend URL]
+- **CD Workflow for Frontend**: [[CD Workflow for Frontend URL](https://github.com/deviousdevops/ie-bank-fe-2024/blob/main/.github/workflows/ie-bank-frontend.yml)]
 ### Deploy to Development Environment
 - *Runs on*: ubuntu-latest
 - *Needs*: build-dev
