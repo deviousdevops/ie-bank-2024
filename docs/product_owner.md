@@ -85,22 +85,27 @@ The Product Vision Board provides a clear and concise visualization of the produ
 
 - **Vision**:
   IE Bank by Devious Devops **envisions secure, intuitive online banking** where customers confidently manage their finances, **securely and comfortably. Over the next decade,** we aim to set the standard for **transparent, ethical, and user-first** banking by **reducing complexity, empowering users, and delivering lasting value.** Our shared ambition inspires and unites our team to create **positive change,** **handle data responsibly,** and ensure **no harm to people or the planet,** guiding us toward a future of **sustainable innovation.**
+  ✅ Inspiring ✅ Shared ✅ Ethical ✅ Concise ✅ Ambitious ✅ Enduring
+
 
 - **Target Group**:
   Our core target group consists of **tech-savvy adults aged 25-45** who regularly use online financial services. They prefer **digital self-service** experiences, value **robust security,** and seek **simplicity** in their day-to-day banking. This group's members share **common behavioral traits:** frequent online transactions, and a strong desire to reduce time spent managing finances.
+  ✅ Clear ✅ Specific ✅ Cohesive
 
 - **Needs**:
   These customers primarily want a banking experience that **saves time and reduces frustration.** They need a **secure way to log in, quickly review account balances, understand transaction histories, and complete transfers with minimal effort.** Their definition of success is measured by the **ease and reliability** of these tasks. We specify and focus on the main benefit: **making account management and transfers quick, worry-free, and transparent.**
+  ✅ Outcome-based ✅ Specific ✅ Focused ✅ Prioritized
 
 - **Product**:
   IE Bank's product is a straightforward, **browser-based web application** that serves as a digital gateway to account management. It **differentiates itself** through a **user experience** that places **clarity and security above all else.** By offering a clean set of capabilities—**user registration with automatic account creation, a secure login process, an intuitive account dashboard, reliable money transfers, and an admin portal for managing users**—the product avoids overwhelming complexity. These big-picture features stand as core pillars that set us apart from alternatives, ensuring our product remains focused on **delivering value**, not feature bloat.
+  ✅ Type ✅ Differentiated ✅ Focused ✅ Big
 
 - **Business Goals**:
   We aim to reduce manual customer support by **20%** in the first year, boosting overall customer satisfaction to consistently **above 4/5,** and cutting **operational overhead** through the admin portal, compared to our first iteration. Our goals remain **measurable, specific, prioritized, and connected to tangible business impact.**
 
 - **Competitors**:
   Our main competitors are established digital banking platforms known for their **broad feature sets** and **brand recognition.** While they excel at offering extensive product lines and trusted security measures, **they often struggle with overly complex user interfaces and slower adaptation to emerging user needs.** We differentiate ourselves by maintaining a **narrow focus** on **simplicity,** ensuring our product stands out through **streamlined experiences, faster iteration,** and a **user-first** design philosophy.
-   
+  ✅ Outcome-based ✅ Specific ✅ Prioritized 
 
 - **Revenue Streams**:
   We plan to **monetize** by providing premium banking services, such as **low-cost international transfers, higher interest savings accounts,** and **tiered subscription models** for advanced capabilities. By aligning our revenue strategy with the **value provided to users,** we ensure that our income generation is tied to improved **customer satisfaction** and the **consistent delivery of meaningful features.**
