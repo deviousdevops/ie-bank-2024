@@ -118,7 +118,7 @@ The Product Vision Board provides a clear and concise visualization of the produ
 
 
 **Context & Goals:**  
-The Devious devops group is building the IE Bank, a fintech startup aiming to deliver an intuitive and secure online banking platform. The MVP focuses on essential features that allow customers to manage their accounts, view transactions, register as new users, and perform basic financial operations. Simultaneously, the MVP must also accommodate administrative functions such as user management, ensuring that an internal administrator can effectively control and maintain the system. The overarching goal is to provide a stable, secure, and functional product that can be released to production with confidence, serving as the foundation for future enhancements.
+The Devious Devops group is building the IE Bank, a fintech startup aiming to deliver an intuitive and secure online banking platform. The MVP focuses on essential features that allow customers to manage their accounts, view transactions, register as new users, and perform basic financial operations. Simultaneously, the MVP must also accommodate administrative functions such as user management, ensuring that an internal administrator can effectively control and maintain the system. The overarching goal is to provide a stable, secure, and functional product that can be released to production with confidence, serving as the foundation for future enhancements.
 
 In the inital iteration, a user was able to create bank accounts with different details such as Name, Currency, Country and Balance. The functionality was limited to a single user, and there was no authentication or authorization. 
 
@@ -129,7 +129,7 @@ The initial iteration was also only developed by a single person, so lots of the
 **1. Multi-Account Management:**  
 From the initial iteration, the system already supports basic CRUD (Create, Read, Update, Delete) operations for user accounts
 
-In this MVP, this functionality remains intact and is extended with introducing authentication, user registration, login, and account operation capabilities. Each user can have one or more bank accounts, each identified by a unique account number, and a user is also able to transfer funds between their accounts.
+In this MVP, this functionality remains intact and is extended with introducing authentication, user registration, login, and account operation capabilities. Each user can have one or more bank accounts, each identified by a unique account number.
 
 **2. Administrator Portal – User Management (Admin Portal):**  
 The MVP introduces an administrator portal designed for internal bank administrators, to provide a straightforward, secure management interface to maintain user integrity and respond to operational needs.
@@ -146,12 +146,12 @@ The MVP refines the user-facing portal where customers interact with their perso
 
 **1. Basic Authentication & Security (NFR 1):**  
 - **Authentication Simplicity:** Use a basic username/password authentication method.  
-- **Secure Credential Storage:** All user credentials (including the admin’s) must be hashed and stored securely in the database. No advanced authentication methods like biometrics, tokens, or OAuth are required at this stage.  
-- **Data Integrity & Privacy:** Communications between the client and server should occur over secure channels (e.g., HTTPS) to maintain confidentiality and integrity, even though the MVP may not fully focus on advanced encryption techniques.
+- **Secure Credential Storage:** All user credentials (including the admin’s) are hashed and stored securely in the database. No advanced authentication methods like biometrics, tokens, or OAuth were implemented at this stage.  
+- **Data Integrity & Privacy:** Communications between the client and server occur over secure channels (e.g., HTTPS) to maintain confidentiality and integrity, even though the MVP may not fully focus on advanced encryption techniques.
 
 **2. Simple Frontend User Interface (NFR 2):**  
-- **Minimal Aesthetics:** The front-end should be functional and straightforward, focusing on clarity rather than design complexity. While the interface must be usable, there is no requirement for advanced styling, cross-browser responsiveness, or dynamic animations.  
-- **Ease of Use:** The UI should clearly present essential actions (login, registration, account viewing, transaction history) without confusing flows or extraneous elements.
+- **Minimal Aesthetics:** The front-end is functional and straightforward, focusing on clarity rather than design complexity. While the interface is usable, there is no requirement for advanced styling, cross-browser responsiveness, or dynamic animations.  
+- **Ease of Use:** The UI clearly presents essential actions (login, registration, account viewing, transaction history) without confusing flows or extraneous elements.
 
 ### DevOps Practices & Methodologies
 
@@ -166,14 +166,16 @@ The MVP refines the user-facing portal where customers interact with their perso
 
 **Feature Branching CI/CD Strategy:**  
 - **Branching Model:**  
-  - **Protected main branch:** Main is always stable and only updated after code review, successful testing, and deployment checks.  
-  - **Short-living Feature Branches:** Each new feature or bug fix is developed on a dedicated feature branch. Once the feature is complete and tested, it is integrated back into main via a pull request.
+  - **Protected main branch:** Main is always stable and only updated after successful testing, and deployment checks.  
+  - **Short-living Feature Branches and Trunk-based Development:** Each new feature or bug fix is developed on a dedicated feature branch. Once the feature is complete and tested, it is integrated back into main via a pull request.
 - **Automated Deployments:**  
   - **Dev Environment:** Any push to a feature branch triggers a build, test, and deployment sequence to the Development environment. This environment is for internal testing and experimentation.  
   - **UAT Environment:** Pull requests targeting the main branch automatically deploy a preview to the UAT environment. The team and stakeholders review and test the changes in this environment. After successful validation and stakeholder sign-off, the merge is completed.  
   - **Prod Environment:** Merging into the main branch triggers a production deployment. This final step puts the MVP in front of real end-users.
 
 ### DTAP Environment Setup
+
+This part is better documented in the [Cloud Architect Documentation](cloud_architect.md), but for clarity, the following environments are used:
 
 **Development Environment:**  
 - **Azure Resource Group:** The Development environment will reside in a resource group (e.g., BCSAI2024-DEVOPS-STUDENTS-A-DEV or BCSAI2024-DEVOPS-STUDENTS-B-DEV) where the team has contributor permissions. This allows the team to experiment, troubleshoot, and test configurations directly within Azure services.
@@ -208,29 +210,174 @@ In summary, the MVP is the product’s first tangible, deployable state, deliver
 
 ## Objectives and Key Results (OKRs)
 
-The Product Owner defines 5 objectives with at least 5 key results (KRs) for each objective that the team will strive to achieve over the next quarter. These OKRs will guide the team towards impactful results.
+Below is a set of five high-level objectives aligned with a product’s growth and quality improvement, each supported by five measurable key results. These OKRs are designed for a product team working on a banking MVP. They focus on improving user experience, system reliability, delivery speed, administrative efficiency, and user engagement within the next quarter. These objectives and key results describe both the work that is done in the MVP and the work that will be done in the post-MVP iterations.
 
-- **Objective 1**: [OKR 1 Description URL]
-- **Objective 2**: [OKR 2 Description URL]
-- **Objective 3**: [OKR 3 Description URL]
-- **Objective 4**: [OKR 4 Description URL]
-- **Objective 5**: [OKR 5 Description URL]
+---
+
+### Objective 1: Improve the Customer Onboarding Experience  
+**Key Results:**  
+1. Increase the percentage of successful user registrations (without errors) from 85% to 95%.  
+2. Reduce the average time to complete the registration process from 3 minutes to under 2 minutes.  
+3. Achieve at least a 4.0/5.0 average satisfaction score from new users (as measured by a post-onboarding survey).  
+4. Decrease new user onboarding-related bad server responses by 30%.  
+5. Increase security measures on onboarding to decrease the number of fraudulent registrations by 50%.
+
+---
+
+The objectives here can be better suplemented in the [Site Reliability Engineering Documentation](site_reliability_engineers.md).
+
+### Objective 2: Enhance System Reliability and Performance  
+**Key Results:**  
+1. Increase the percentage of successful login requests from 90% to 99%.
+2. Decrease the average time for a money transfer to complete from 3 seconds to under 2 seconds.
+3. Increase the number of concurrent users the application can handle from 100 to 1,000 with an average response time under 2 seconds.
+4. Decrease the number of critical error logs in production by 50%.
+5. Decrease the average page load time on the user portal from 2.5s to under 1.5s.
+
+---
+
+### Objective 3: Accelerate Feature Delivery and Deployment Pipeline  
+**Key Results:**  
+1. Increase release frequency to the Production environment from once per month to once per week.  
+2. Reduce the average build time in CI from 10 minutes to under 5 minutes.  
+3. Achieve at least 90% automated test coverage of critical features.  
+4. Decrease the lead time from code commit to production deployment from 24 hours to under 2 hours.  
+5. Reduce the rollback rate of production deployments due to defects from 10% to under 3%.
+
+---
+
+### Objective 4: Improve Admin Portal Efficiency & Effectiveness  
+**Key Results:**  
+1. Decrease the average time for an admin to create/update a user profile from 5 minutes to under 2 minutes.  
+2. Achieve a 4.5/5.0 internal satisfaction rating from admins using the portal (measured via internal feedback survey).  
+3. Reduce admin escalations to the development team by 50% (indicating admins can resolve most user issues independently).  
+4. Achieve a 95% first-contact resolution rate for user account management issues handled by admins.  
+5. Provide comprehensive admin portal training, ensuring 100% of admins complete onboarding materials and pass a basic competency quiz.
+
+---
+
+### Objective 5: Increase End-User Engagement & Transaction Volume  
+**Key Results:**  
+1. Increase the number of monthly active users (MAU) by 20% compared to the previous quarter.  
+2. Increase the average number of successful transactions per active user per month by 15%.  
+3. Decrease monthly user churn (account closures) from 5% to under 3%.  
+4. Achieve a 70% adoption rate for the internal money transfer feature among active users.  
+5. Attain a Net Promoter Score (NPS) of at least 40, indicating improved user satisfaction and likelihood to recommend the service.
+
+---
+
+**OKR Usage:**  
+- **Regular Review:**  Our team will assess progress against these key results every two weeks. Adjust strategies if metrics are not trending in the right direction.  
+- **Cross-Functional Collaboration:** Our product owner, cloud architect, full stack developers, infrastructure engineers, site reliability engineers, and security engineer will ensure that everyone’s efforts are aligned with achieving these OKRs.  
+- **Incremental Improvement:** If targets seem consistently easy or hard to meet, our team will calibrate accordingly in the next cycle.
 
 ---
 
 ## Scrum Methodology
 
-The Scrum methodology is adopted to manage the workflow of the product development. This section explains the Scrum framework used in the team and its practices.
+Scrum is an agile framework that helps teams deliver high-quality software products incrementally and iteratively. Rather than trying to plan and execute every detail of a product upfront, Scrum focuses on continuous improvement, flexibility, and close collaboration between team members and stakeholders. The goal is to respond to change quickly, deliver value frequently, and ensure that the final product truly meets user needs.
 
-- **Scrum Process**: [Scrum Methodology URL]
+As the product owner and scrum master, I have the following responsibilities:
+
+1. **Product Owner (PO):**  
+   - Define the product vision and long-term strategy.  
+   - Maintain and prioritize the product backlog (a list of desired product changes, features, and fixes).  
+   - Act as the voice of the customer, ensuring that what the team builds aligns with business objectives and user requirements.
+
+2. **Scrum Master:**  
+   - Facilitate the Scrum process, ensuring the team follows agile principles.  
+   - Remove impediments that block the team’s progress.  
+   - Coach the team on continuous improvement and help maintain a healthy, productive work environment.
+
+**Key Artifacts:**
+
+1. **Product Backlog:**  
+   - A prioritized list of features, enhancements, bug fixes, and other work needed to improve the product.  
+   - Continuously refined by the Product Owner and the team to ensure clarity, detail, and priority are always up-to-date.
+
+2. **Sprint Backlog:**  
+   - A subset of the product backlog items selected for completion in the current sprint.  
+   - Represents the team’s commitment for what they aim to deliver by the end of the sprint.  
+   - Updated daily by the development team to reflect current progress and any changes.
+
+**Key Events:**
+
+1. **Sprint Planning:**  
+   - Was held at the start of each sprint (a time-boxed iteration, typically 1–4 weeks).  
+   - The Product Owner presented the highest-priority items from the product backlog.  
+   - The development team selected which items they could realistically complete within the sprint and created the sprint backlog.
+
+2. **Daily Scrum (Stand-up):**  
+   - A short, time-boxed meeting (usually 15 minutes) held every day.  
+   - The development team members share what they did since the last Daily Scrum, what they plan to do today, and any impediments they face.  
+   - Ensures continuous alignment and quick issue resolution.
+
+3. **Sprint Review:**  
+   - Held at the end of the sprint to inspect the Increment and adapt the product backlog if needed.  
+   - The team demonstrated the work completed to stakeholders, gathered feedback, and discussed next steps.  
+   - Encourages transparency and helps ensure the product evolves in the right direction.
+
+4. **Sprint Retrospective:**  
+   - Occurs right after the Sprint Review, before the next Sprint Planning.  
+   - The team reflected on how the sprint went, focusing on processes, tools, and collaboration.  
+   - Identified opportunities for improvement and committed to at least one actionable change to enhance efficiency and quality in the next sprint.
 
 ---
 
 ## Collaboration Strategy
 
-Effective collaboration is critical for the success of any project. This section covers the tools and strategies employed to ensure that the team stays connected and coordinated.
+**Overview:**  
+Our DevOps collaboration strategy is designed to enable fast, frequent releases and continuous improvement. At the core of this approach are agile methodologies, test-driven development (TDD), trunk-based development, and a suite of integrated tools connected through Slack. By making Slack the central hub of communication and information sharing, teams can rapidly respond to feedback, coordinate releases, and maintain high-quality code. This synergy enhances transparency, shortens feedback loops, and fosters a culture of continuous delivery and iteration.
 
-- **Collaboration Tools**: [Collaboration Strategy URL]
+**Key Practices:**
+
+1. **Agile & Scrum Methodology:**  
+   We follow Scrum to manage our work in sprints, maintain a prioritized product backlog, and ensure we regularly review and improve our processes. Scrum ceremonies (sprint planning, daily stand-ups, sprint reviews, retrospectives) are conducted via Zoom/Slack and integrated tools, ensuring the team remains aligned and productive.
+
+2. **Test-Driven Development (TDD):**  
+   TDD ensures that tests are written before the code is implemented, guaranteeing that each feature or fix is thoroughly validated. Slack channels receive automated notifications about test results from CI pipelines, enabling immediate visibility into code quality. If a build or test fails, the team is alerted in real-time, and developers can address issues promptly.
+
+3. **Trunk-Based Development:**  
+   Our code integration strategy is based on trunk-based development. Short-lived feature branches are merged into the main branch (trunk) frequently and with minimal friction. This ensures that the codebase remains stable, integration challenges are minimized, and new features can be released rapidly. With Slack notifications set up, each merge and build result is communicated in relevant channels, giving all team members real-time insights into the development progress.
+
+**Slack as a Central Collaboration Hub:**
+- **#alerts:** General system alerts and notifications not specific to any single repository
+- **#backend:** Updates, discussions, and GitHub notifications specific to the backend repository
+- **#frontend:** Updates, discussions, and GitHub notifications specific to the frontend repository
+- **#fullstack:** Combined updates and discussions covering both frontend and backend development
+- **#general:** Team-wide announcements and general communication
+- **#infra:** Infrastructure repository updates, deployment notifications, and cloud resource discussions
+- **#product-and-architecture:** Product planning, architectural decisions, and technical roadmap discussions
+- **#reliability-security:** Security alerts, reliability metrics, and related discussions
+- **#slo-alerts:** Service Level Objective monitoring and alerts
+- **#social:** Team social interactions and non-work discussions
+
+**Integrations:**
+
+1. **Azure DevOps Boards + Slack:**
+   - Backlog items updates appear directly in Slack.
+   - Sprint planning and daily stand-ups are enriched with live data, keeping the team focused on the highest-value work.
+   - Ensures that what’s being tested and built always aligns with the prioritized backlog.
+   ![Azure DevOps Boards Slack Integration](images/devopslack.png)
+
+2. **Slack + GitHub (CI/CD notifications):**
+   - CI pipelines run tests written as part of TDD before code integration.
+   - Slack notifications on build completions, test results, and deployment status to Dev, UAT, and Prod environments.
+   - Enables developers to maintain fast feedback cycles and identify integration issues early.
+![GitHub Slack Integration](images/githubslack.png)
+
+
+3. **Slack + Zoom:**
+   - Instant video conferencing for pairing sessions, sprint planning, or incident response.
+   - Developers can jump on a call to resolve test failures faster or discuss trunk-based branching strategies in real-time.
+![Slack Zoom Integration](images/zoomslack.png)
+
+4. **Azure Monitoring + Slack:**
+   - SLO alerts (latency, error rates) and resource utilization notifications appear in #operations-monitoring.
+   - Quick response to production issues, ensuring continuous reliability and stability of the system.
+   - Enables SREs and developers to rapidly address issues before they impact end-users.
+![Azure Monitoring Slack Integration](images/azureslack.png)
+
 
 ---
 
