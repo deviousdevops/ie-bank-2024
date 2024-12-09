@@ -149,10 +149,11 @@ This section details the CI workflow for the frontend, highlighting the build st
 Each environment has a separate build job that:
 - *Runs on*: ubuntu-latest
 - *Steps*:
-  1. Checks out the code
-  2. Sets up the required Node.js environment
-  3. Installs dependencies and builds the application using environment-specific .env files
-  4. Uploads the build artifacts for use in the corresponding deployment job
+  1. **Checks out the code**: Retrieves the latest code from the repository to ensure the workflow operates on the most up-to-date version of the application.
+  2. **Sets up the required Node.js environment**: Configures the Node.js runtime environment to match the application's requirements, including version and caching for dependencies.
+  3. **Installs dependencies and builds the application using environment-specific .env files**: Downloads all required libraries and packages, and compiles the frontend application with environment-specific configurations (e.g., Development, UAT, or Production).
+  4. **Uploads the build artifacts for use in the corresponding deployment job**: Saves the compiled application files (e.g., dist-dev, dist-uat, dist-prod) as artifacts to be used in the subsequent deployment step for each environment.
+
 
 ---
 
@@ -198,24 +199,18 @@ The Test/Behavior Driven Development (TDD/BDD) strategy defines how the team des
 
 - **TDD/BDD Strategy**: [TDD/BDD Strategy URL]
 
-We started by creating three user stories that represent the main functionality our website needs for the users: 
-- As a new user, I want to register for the application by providing my details so that I can create an account and start using the bank's services.
-- As a bank user, I want the ability to create and manage multiple bank accounts associated with my profile so that I can organize my finances and update account details as needed.
-- As a bank user, I want to transfer money to other accounts by entering the recipient’s account number and the transfer amount so that I can manage payments or send funds. The system should ensure that the transfer amount does not exceed the available balance in my account.
-
 ## Unit Tests
 
 ### Test Files
 - test_model.py: Contains tests for the models in the application.
-
-To achieve these user stories we created the following tests and made sure our application had these functionalities implemented.
 
 ### Test Functions
 
 #### 
 
 #### test_create_multiple_accounts(init_database, sample_user)
-
+- **User Story**:
+  1. As a bank user, I want the ability to create and manage multiple bank accounts associated with my profile so that I can organize my finances and update account details as needed.
 
 - **Description**: Tests creating multiple accounts for a single user.
 - **Steps**:
@@ -228,6 +223,8 @@ To achieve these user stories we created the following tests and made sure our a
 #### 
 
 #### test_account_balance_default(init_database, sample_user)
+- **User Story**:
+  1. As a new user, I want to register for the application by providing my details so that I can create an account and start using the bank's services.
 
 
 - **Description**: Tests the default balance of an account.
@@ -252,7 +249,8 @@ To achieve these user stories we created the following tests and made sure our a
 #### 
 
 #### test_create_transaction(init_database, sample_user)
-
+- **User Story**:
+  1. As a bank user, I want to transfer money to other accounts by entering the recipient’s account number and the transfer amount so that I can manage payments or send funds. The system should ensure that the transfer amount does not exceed the available balance in my account.
 
 - **Description**: Tests creating a transaction.
 - **Steps**:
@@ -489,7 +487,6 @@ The inner loop refers to the development cycle where developers make changes to 
 3. *Commit and Push*: Once satisfied, developers commit their changes and push them to the remote repository.
 
 ### Outer Loop
-
 The outer loop refers to the CI/CD pipeline that takes over once the code is pushed to the remote repository. This loop ensures that the code is built, tested, and deployed in an automated and consistent manner across different environments.
 
 1. *Trigger Events*: The workflow is triggered by push events, pull requests to the main branch, or manual dispatches.
@@ -499,6 +496,20 @@ The outer loop refers to the CI/CD pipeline that takes over once the code is pus
 5. *Deploy to UAT*: The build artifacts are downloaded, and the application is deployed to the UAT environment.
 6. *Run Postman Tests*: Postman tests are run on the UAT environment to verify the deployment.
 7. *Deploy to Production*: The build artifacts are downloaded, and the application is deployed to the Production environment.
+
+### Outer Loop
+The outer loop automates the CI/CD pipeline for building, testing, and deploying the frontend to Azure Static Web Apps across environments.
+
+1. **Trigger Events**: Triggered by push, pull requests to main, or manual dispatch (workflow_dispatch).
+2. **Build Jobs**:
+   - Check out code, set up Node.js, install dependencies, build with .env files, and upload artifacts (dist-dev, dist-uat, dist-prod).
+3. **Deploy to Development**:
+   - Download artifact (node-app-dev), fetch deployment token from Development Key Vault, and deploy to Azure Static Web App.
+4. **Deploy to UAT**:
+   - After build-uat and deploy-dev, download artifact (node-app-uat), fetch UAT token, and deploy.
+5. **Deploy to Production**:
+   - After build-prod and deploy-uat, download artifact (node-app-prod), fetch Production token, and deploy.
+6. **Output URLs**: Log Static Web App URLs for each environment.
 
 ---
 

@@ -76,6 +76,11 @@ Welcome to the Cloud Architect's section of the IE BANK documentation. Below you
 
 The infrastructure for the IE Bank MVP has been carefully designed to ensure scalability, security, and cost-effectiveness while meeting the functional and non-functional requirements of the application. We have adopted a cloud-native approach, leveraging Microsoft Azure services to create a robust DTAP (Development, Testing, Acceptance, Production) environment strategy. This design aligns with industry best practices and the Azure Well-Architected Framework.
 
+### Infrastructure Architecture Diagram
+![This is the Infrastructure Architecture Diagram](images/infraDiagram.png)
+
+
+
 ### Key Azure Services and Architecture Components
 1. **Frontend Hosting** : **Azure Static Web Apps:**
   - A lightweight and cost-effective service to host the Vue.js frontend.
@@ -94,8 +99,8 @@ The infrastructure for the IE Bank MVP has been carefully designed to ensure sca
   - Ensures secure storage of secrets like PostgreSQL credentials and ACR authentication keys.
   - Integrated with the backend and deployment pipelines for automated secret retrieval.
 6. **Monitoring and Logging: Azure Alerts, Application Insights and Log Analytics Workspace**
-  - Log collection and metric analysis for infrastructure and application layers on Azure Workbooks.
-  - Azure Application Insights: Provides in-depth performance monitoring and telemetry for the frontend and backend. //ASK EDU
+  - Log collection and metric analysis for infrastructure and application layers on Azure Workbooks. Workbook content is in a workbooks folder and as a .json file, allowing us to make changes whenever we may want.
+  - Azure Application Insights: Provides in-depth performance monitoring and telemetry for the frontend and backend. 
 
 ### Environment Setup: DTAP Approach
 We have implemented a **DTAP** (Development, Testing, Acceptance, Production) environment strategy to ensure isolated and controlled stages for the application lifecycle.
@@ -147,6 +152,7 @@ Each environment is deployed within its respective Azure Resource Group, with co
   - **Azure Database for PostgreSQL**: Basic configuration for cost-effectiveness.
   - **Azure Key Vault**: Stores secrets (e.g., database credentials).
   - **Azure App Insights and Log Analytics**: Tracks performance metrics and logs during development.
+  - **Azure Logic App**: communicates between our alerts and slack to send alerts
 - **Deployment**:
   - Triggered by GitHub feature branch commits using CI pipelines.
   - Frequent deployments ensure real-time validation of new code.
@@ -378,7 +384,6 @@ The **DevOps Checklist** from the Azure Architecture Center has been reviewed an
 **Testing**
 - **Unit tests**: `pytest` for backend, Postman for APIs in CI workflows.
 - **Automated functional tests**: Required for UAT deployments as status checks.
-- **Deployment strategies**: Canary or blue-green strategies for critical Production updates. //FIX LATER
 
 **Infrastructure as Code (IaC)**
 - Infrastructure modularized using Azure Bicep.
@@ -437,8 +442,20 @@ The updated release strategy tightly integrates secure, efficient, and scalable 
 
 This section includes the diagrams for each use case and sequential models to illustrate the flow of data and interactions within the system.
 
-- **Use Case Diagrams**: [Use Case Diagrams URL]
-- **Sequential Model Diagrams**: [Sequential Model Diagrams URL]
+- **General Use Case and Sequential Diagrams**:
+![This is the use case diagram](images/ucsd1.png)
+![This is the use case diagram](images/ucsd10.png)
+
+- **User Use Case and Sequential Diagrams**:
+![This is the use case diagram](images/ucsd2.png)
+![This is the use case diagram](images/ucsd3.png)
+![This is the use case diagram](images/ucsd4.png)
+![This is the use case diagram](images/ucsd5.png)
+- **Admin Use Case and Sequential Diagrams**:
+![This is the use case diagram](images/ucsd6.png)
+![This is the use case diagram](images/ucsd7.png)
+![This is the use case diagram](images/ucsd8.png)
+![This is the use case diagram](images/ucsd9.png)
 
 ---
 
