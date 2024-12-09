@@ -84,7 +84,7 @@ The IE Bank system will include a **bank user management portal** for administra
 **Description**:  
 The IE Bank system will provide a **bank account management portal** for users. This portal allows users to manage accounts, view transactions, and perform banking operations.
 
-- **FR 3**: New users must be able to register through a form that includes a username, password, and password confirmation. Upon registration, a new account is automatically created with a unique account number.  
+- **FR 3**: New users must be able to register through a form that includes a username, password, and password confirmation. 
     - [Related - User Story #25](https://dev.azure.com/zalsahebieu2022/ie-bank-2024/_workitems/edit/25) 
 
 - **FR 4**: Users must be able to log in using their username and password to access their accounts and transactions securely. Once logged in, they can view only their owned bank accounts and transactions.
