@@ -363,7 +363,7 @@ The release strategy follows our **DTAP (Development, Testing, Acceptance, Produ
 - **Purpose**: Final live environment for end-users.
 - **Configuration**:
   - High-availability services and redundancy (e.g., zone-redundant PostgreSQL).
-  - Secure configurations and monitoring (Key Vault, Azure Monitor).
+  - Secure configurations and monitoring (Key Vault, App Insights).
 - **Deployment Trigger**: Successful tests in UAT and approved PRs merged into the main branch.
 
 ### Decisions Based on the DevOps Checklist
@@ -565,7 +565,7 @@ The 12-Factor App methodology provides a set of best practices for building mode
 **Keep development, staging, and production as similar as possible.**  
 **Implementation**:
 - DTAP environments are provisioned using the same Bicep templates for consistency.
-- Azure Monitor and Application Insights provide similar telemetry in all environments.
+- Application Insights provide similar telemetry in all environments.
 
 ---
 
@@ -573,7 +573,7 @@ The 12-Factor App methodology provides a set of best practices for building mode
 **Treat logs as event streams.**  
 **Implementation**:
 - Application and infrastructure logs are centralized in Log Analytics Workspace.
-- Application Insights captures performance and error telemetry for both frontend and backend. // fix everwhere that syas azure mionitor
+- Application Insights captures performance and error telemetry for both frontend and backend.
 
 ---
 

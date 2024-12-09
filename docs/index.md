@@ -43,13 +43,6 @@ Explore the contributions of each team role to the development of IE Bank. Click
 
 ---
 
-## **Meet the Team**
-Learn more about the talented individuals who contributed to the IE Bank project.  
-
-- [Meet the Team](meet_the_team.md)
-
----
-
 Feel free to navigate through each section to dive deeper into the project design, requirements, and roles. For any questions, please reach out via the project repository.
 
 
